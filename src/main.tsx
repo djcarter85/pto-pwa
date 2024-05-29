@@ -5,6 +5,7 @@ import { Amplify } from "aws-amplify";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { LoginPage } from "./pages/login-page.tsx";
 import { LeaderboardPage } from "./pages/leaderboard-page.tsx";
+import { PrivateRoutes } from "./components/private-routes.tsx";
 
 Amplify.configure({
   Auth: {
@@ -20,7 +21,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/leaderboard" element={<LeaderboardPage />} />
+        <Route element={<PrivateRoutes />}>
+          <Route path="/leaderboard" element={<LeaderboardPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
