@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { Amplify } from "aws-amplify";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { LoginPage } from "./pages/login-page.tsx";
 import { LeaderboardPage } from "./pages/leaderboard-page.tsx";
 
@@ -15,24 +15,13 @@ Amplify.configure({
   },
 });
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    children: [
-      {
-        path: "/login",
-        element: <LoginPage />,
-      },
-      {
-        path: "/leaderboard",
-        element: <LeaderboardPage />,
-      },
-    ],
-  },
-]);
-
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/leaderboard" element={<LeaderboardPage />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
 );
