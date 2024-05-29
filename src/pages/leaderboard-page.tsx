@@ -1,16 +1,7 @@
-import { JWT, fetchAuthSession } from "aws-amplify/auth";
-import { useEffect, useState } from "react";
+import { useAuth } from "../hooks/use-auth";
 
 const LeaderboardPage = () => {
-  const [token, setToken] = useState<JWT | undefined>(undefined);
-
-  useEffect(() => {
-    const fetchSession = async () => {
-      const session = await fetchAuthSession();
-      setToken(session.tokens?.idToken);
-    };
-    fetchSession();
-  });
+  const { token } = useAuth();
 
   return (
     <div>
