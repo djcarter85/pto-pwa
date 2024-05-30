@@ -16,7 +16,7 @@ const Input = ({
 }) => {
   return (
     <input
-      className="rounded border border-gray-500/80 px-3 py-2"
+      className="w-full rounded border border-gray-900/40 px-3 py-2"
       type={type}
       placeholder={placeholder}
       value={value}
@@ -43,7 +43,8 @@ const LoginPage = () => {
 
   return (
     <div className="relative flex min-h-screen flex-col justify-center">
-      <div className="mx-auto my-8 flex w-96 flex-col gap-4 rounded-lg border border-gray-900/20 bg-white p-8 shadow-xl">
+      <div className="mx-auto my-8 flex w-96 max-w-full flex-col items-center gap-4 rounded-lg border border-gray-900/20 bg-white p-8 shadow-xl">
+        <img src="/android-chrome-512x512.png" className="w-24 rounded-2xl" />
         <Input
           type="email"
           placeholder="Email"
@@ -58,12 +59,12 @@ const LoginPage = () => {
         />
         <input
           type="submit"
-          className="rounded bg-sky-500 p-2 font-bold text-sky-50 hover:bg-sky-600"
+          className="w-full rounded bg-blue-900 p-2 font-bold text-white hover:bg-blue-600"
           onClick={(e) => {
             e.preventDefault();
             logIn();
           }}
-          value="Log in ..."
+          value="Log in"
         />
       </div>
     </div>
