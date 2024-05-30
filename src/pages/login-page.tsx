@@ -1,6 +1,7 @@
 import { signIn } from "aws-amplify/auth";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
+import { useAuth } from "../hooks/use-auth";
 
 const Input = ({
   type,
@@ -27,16 +28,18 @@ const Input = ({
 const LoginPage = () => {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [hasLoggedIn, setHasLoggedIn] = useState(false);
+
+  const { isLoggedIn: isAlreadyLoggedIn } = useAuth();
+
+  if (isAlreadyLoggedIn || hasLoggedIn) {
+    return <Navigate to="/leaderboard" />;
+  }
 
   const logIn = async () => {
     await signIn({ username: emailAddress, password: password });
-    setLoggedIn(true);
+    setHasLoggedIn(true);
   };
-
-  if (loggedIn) {
-    return <Navigate to="/leaderboard" />;
-  }
 
   return (
     <div className="relative flex min-h-screen flex-col justify-center">

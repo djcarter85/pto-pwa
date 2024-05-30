@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { Amplify } from "aws-amplify";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { LoginPage } from "./pages/login-page.tsx";
 import { LeaderboardPage } from "./pages/leaderboard-page.tsx";
 import { PrivateRoutes } from "./components/private-routes.tsx";
@@ -20,6 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<LoginPage />} />
         <Route element={<PrivateRoutes />}>
           <Route path="/leaderboard" element={<LeaderboardPage />} />

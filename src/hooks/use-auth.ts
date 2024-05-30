@@ -14,7 +14,7 @@ const useAuth = () => {
     fetchSession();
   });
 
-  return { token, isLoading };
+  return { token, isLoading, isLoggedIn: !!token };
 };
 
 export { useAuth };
