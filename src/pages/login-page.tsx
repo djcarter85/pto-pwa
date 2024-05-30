@@ -55,7 +55,7 @@ const LoginPage = () => {
         />
         <input
           type="submit"
-          className="rounded bg-sky-500 p-2 font-bold text-sky-50 hover:bg-sky-600"
+          className="rounded bg-gradient-to-br from-mantis-400 to-mantis-500 p-2 font-bold text-white hover:from-mantis-500 hover:to-mantis-600"
           onClick={(e) => {
             e.preventDefault();
             logIn();
