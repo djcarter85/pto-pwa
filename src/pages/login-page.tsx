@@ -1,5 +1,6 @@
 import { signIn } from "aws-amplify/auth";
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 const Input = ({
   type,
@@ -14,7 +15,7 @@ const Input = ({
 }) => {
   return (
     <input
-      className="rounded px-3 py-2 border border-gray-500/80"
+      className="rounded border border-gray-500/80 px-3 py-2"
       type={type}
       placeholder={placeholder}
       value={value}
@@ -26,14 +27,20 @@ const Input = ({
 const LoginPage = () => {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const logIn = async () => {
     await signIn({ username: emailAddress, password: password });
+    setLoggedIn(true);
   };
+
+  if (loggedIn) {
+    return <Navigate to="/leaderboard" />;
+  }
 
   return (
     <div className="relative flex min-h-screen flex-col justify-center">
-      <div className="mx-auto my-8 flex w-96 flex-col gap-4 rounded-lg border border-gray-900/20 shadow-xl bg-white p-8">
+      <div className="mx-auto my-8 flex w-96 flex-col gap-4 rounded-lg border border-gray-900/20 bg-white p-8 shadow-xl">
         <Input
           type="email"
           placeholder="Email"
