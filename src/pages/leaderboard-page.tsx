@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
 import { z } from "zod";
-import { fetchAuthSession } from "aws-amplify/auth";
 import { useData } from "../hooks/use-data";
+import { useParams } from "react-router-dom";
 
 const leaderboardPageSchema = z.object({
   leaderboard: z.array(
@@ -14,8 +13,10 @@ const leaderboardPageSchema = z.object({
 });
 
 const LeaderboardPage = () => {
+  const { tournamentCode } = useParams();
+
   const { data } = useData(
-    "/leaderboardPage?roundCode=pl2324-38",
+    `/leaderboardPage?tournamentCode=${tournamentCode}`,
     leaderboardPageSchema,
   );
 
