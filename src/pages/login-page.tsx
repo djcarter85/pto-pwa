@@ -2,8 +2,6 @@ import { signIn } from "aws-amplify/auth";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth";
-import { useData } from "../hooks/use-data";
-import { z } from "zod";
 import { useTournaments } from "../hooks/use-tournaments";
 import { getTournamentHomeUrl } from "../utils/urls";
 
