@@ -8,6 +8,9 @@ import { LeaderboardPage } from "./pages/leaderboard-page.tsx";
 import { PrivateRoutes } from "./components/private-routes.tsx";
 import "@fontsource/figtree/400.css";
 import "@fontsource/figtree/700.css";
+import { TournamentLayout } from "./layouts/tournament-layout.tsx";
+import { PredictionsPage } from "./pages/predictions-page.tsx";
+import { HomePage } from "./pages/home-page.tsx";
 
 Amplify.configure({
   Auth: {
@@ -25,7 +28,14 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<LoginPage />} />
         <Route element={<PrivateRoutes />}>
-          <Route path="/leaderboard" element={<LeaderboardPage />} />
+          <Route
+            path="/tournament/:tournamentCode"
+            element={<TournamentLayout />}
+          >
+            <Route path="home" element={<HomePage />} />
+            <Route path="leaderboard" element={<LeaderboardPage />} />
+            <Route path="predictions" element={<PredictionsPage />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

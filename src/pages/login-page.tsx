@@ -2,6 +2,8 @@ import { signIn } from "aws-amplify/auth";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth";
+import { useData } from "../hooks/use-data";
+import { z } from "zod";
 
 const Input = ({
   type,
@@ -25,6 +27,23 @@ const Input = ({
   );
 };
 
+const tournamentSchema = z.object({ code: z.string(), name: z.string() });
+
+const tournamentsSchema = z.object({
+  tournaments: z.array(tournamentSchema),
+  currentTournament: tournamentSchema,
+});
+
+const PostLogin = () => {
+  const { data } = useData("/tournaments", tournamentsSchema);
+
+  if (!data) {
+    return <div>loading ...</div>;
+  }
+
+  return <Navigate to={`/tournament/${data.currentTournament.code}/home`} />;
+};
+
 const LoginPage = () => {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
@@ -33,7 +52,7 @@ const LoginPage = () => {
   const { isLoggedIn: isAlreadyLoggedIn } = useAuth();
 
   if (isAlreadyLoggedIn || hasLoggedIn) {
-    return <Navigate to="/leaderboard" />;
+    return <PostLogin />;
   }
 
   const logIn = async () => {
