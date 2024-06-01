@@ -5,6 +5,7 @@ import { useAuth } from "../hooks/use-auth";
 import { useData } from "../hooks/use-data";
 import { z } from "zod";
 import { useTournaments } from "../hooks/use-tournaments";
+import { getTournamentHomeUrl } from "../utils/urls";
 
 const Input = ({
   type,
@@ -36,7 +37,7 @@ const PostLogin = () => {
   }
 
   return (
-    <Navigate to={`/tournament/${tournaments.currentTournament.code}/home`} />
+    <Navigate to={getTournamentHomeUrl(tournaments.currentTournament.code)} />
   );
 };
 

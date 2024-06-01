@@ -11,6 +11,7 @@ import "@fontsource/figtree/700.css";
 import { TournamentLayout } from "./layouts/tournament-layout.tsx";
 import { PredictionsPage } from "./pages/predictions-page.tsx";
 import { HomePage } from "./pages/home-page.tsx";
+import { getLoginUrl } from "./utils/urls.ts";
 
 Amplify.configure({
   Auth: {
@@ -25,7 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/" element={<Navigate to={getLoginUrl()} />} />
         <Route path="/login" element={<LoginPage />} />
         <Route element={<PrivateRoutes />}>
           <Route

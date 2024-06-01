@@ -9,6 +9,7 @@ import {
 import { Link, Outlet, useParams } from "react-router-dom";
 import { useTournaments } from "../hooks/use-tournaments";
 import { Tournaments } from "../types/tournaments";
+import { getTournamentHomeUrl, getTournamentLeaderboardUrl, getTournamentPredictionsUrl } from "../utils/urls";
 
 const getBackgroundClassName = (tournamentCode: string) => {
   switch (tournamentCode) {
@@ -79,17 +80,17 @@ const Nav = ({ tournamentCode }: { tournamentCode: string }) => {
     >
       <div className="flex h-16 flex-row items-center justify-evenly">
         <NavLink
-          to={`/tournament/${tournamentCode}/home`}
+          to={getTournamentHomeUrl(tournamentCode)}
           title="Home"
           icon={<House />}
         />
         <NavLink
-          to={`/tournament/${tournamentCode}/predictions`}
+          to={getTournamentPredictionsUrl(tournamentCode)}
           title="Predictions"
           icon={<PatchQuestion />}
         />
         <NavLink
-          to={`/tournament/${tournamentCode}/leaderboard`}
+          to={getTournamentLeaderboardUrl(tournamentCode)}
           title="Leaderboard"
           icon={<ListOl />}
         />
