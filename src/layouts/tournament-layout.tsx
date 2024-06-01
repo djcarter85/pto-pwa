@@ -1,3 +1,4 @@
+import cx from "classix";
 import { ReactNode } from "react";
 import {
   House,
@@ -7,13 +8,27 @@ import {
 } from "react-bootstrap-icons";
 import { Link, Outlet, useParams } from "react-router-dom";
 
+const getBackgroundClassName = (tournamentCode: string) => {
+  switch (tournamentCode) {
+    case "euro2024":
+      return "bg-[#2047dd]";
+    case "pl2324":
+      return "bg-[#38003c]";
+  }
+
+  return "bg-blue-900";
+};
+
 const TournamentHeader = ({ tournamentCode }: { tournamentCode: string }) => {
   return (
-    <div className="fixed left-0 right-0 top-0 bg-[#38003c] text-[#ffffff] px-safe pt-safe">
+    <div
+      className={cx(
+        "fixed left-0 right-0 top-0 text-[#ffffff] px-safe pt-safe",
+        getBackgroundClassName(tournamentCode),
+      )}
+    >
       <div className="flex h-16 flex-row items-center justify-between px-4">
-        <div className="text-2xl font-bold">
-          Premier League 2023/24
-        </div>
+        <div className="text-2xl font-bold">Premier League 2023/24</div>
         <button className="rounded-lg p-2 text-2xl hover:bg-white/50 hover:text-[#38003c]">
           <ThreeDotsVertical />
         </button>
@@ -44,9 +59,14 @@ const NavLink = ({
 
 const Nav = ({ tournamentCode }: { tournamentCode: string }) => {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-[#38003c] text-[#ffffff] px-safe pb-safe">
+    <nav
+      className={cx(
+        "fixed bottom-0 left-0 right-0 text-[#ffffff] px-safe pb-safe",
+        getBackgroundClassName(tournamentCode),
+      )}
+    >
       <div className="flex h-16 flex-row items-center justify-evenly">
-      <NavLink
+        <NavLink
           to={`/tournament/${tournamentCode}/home`}
           title="Home"
           icon={<House />}
