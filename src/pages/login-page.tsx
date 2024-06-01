@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth";
 import { useData } from "../hooks/use-data";
 import { z } from "zod";
+import { useTournaments } from "../hooks/use-tournaments";
 
 const Input = ({
   type,
@@ -27,21 +28,16 @@ const Input = ({
   );
 };
 
-const tournamentSchema = z.object({ code: z.string(), name: z.string() });
-
-const tournamentsSchema = z.object({
-  tournaments: z.array(tournamentSchema),
-  currentTournament: tournamentSchema,
-});
-
 const PostLogin = () => {
-  const { data } = useData("/tournaments", tournamentsSchema);
+  const { tournaments } = useTournaments();
 
-  if (!data) {
+  if (!tournaments) {
     return <div>loading ...</div>;
   }
 
-  return <Navigate to={`/tournament/${data.currentTournament.code}/home`} />;
+  return (
+    <Navigate to={`/tournament/${tournaments.currentTournament.code}/home`} />
+  );
 };
 
 const LoginPage = () => {
