@@ -1,10 +1,15 @@
 import colors from "tailwindcss/colors";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+      },
+    },
     colors: {
       white: colors.white,
       black: colors.black,

@@ -6,6 +6,8 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { LoginPage } from "./pages/login-page.tsx";
 import { LeaderboardPage } from "./pages/leaderboard-page.tsx";
 import { PrivateRoutes } from "./components/private-routes.tsx";
+import "@fontsource/figtree/400.css";
+import "@fontsource/figtree/700.css";
 
 Amplify.configure({
   Auth: {
