@@ -48,7 +48,7 @@ const LeaderboardPage = () => {
 
   return (
     <div>
-      <div className="pt-safe-offset-2 px-safe-offset-2 bg-[#38003c] pb-2 text-center text-[#ffffff]">
+      <div className="pt-safe-offset-3 px-safe-offset-3 bg-[#38003c] pb-3 text-center text-[#ffffff] font-bold text-2xl">
         Premier League 2023/24
       </div>
       <div>LeaderboardPage</div>
