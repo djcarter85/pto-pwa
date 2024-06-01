@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { z } from "zod";
 import { fetchAuthSession } from "aws-amplify/auth";
+import { ThreeDotsVertical } from "react-bootstrap-icons";
 
 const schema = z.object({
   leaderboard: z.array(
@@ -49,8 +50,11 @@ const LeaderboardPage = () => {
   return (
     <div>
       <div className="pt-safe px-safe fixed left-0 right-0 top-0 bg-[#38003c] text-[#ffffff]">
-        <div className="flex h-16 flex-col items-center justify-center">
+        <div className="flex h-16 flex-row items-center justify-between px-4">
           <div className="text-2xl font-bold">Premier League 2023/24</div>
+          <button className="rounded-lg p-2 text-2xl hover:bg-white/50 hover:text-[#38003c]">
+            <ThreeDotsVertical />
+          </button>
         </div>
       </div>
       <div className="pt-safe-offset-16">

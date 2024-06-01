@@ -13,6 +13,7 @@
     "@fontsource/figtree": "^5.0.20",
     "aws-amplify": "^6.3.4",
     "react": "^18.2.0",
+    "react-bootstrap-icons": "^1.11.4",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",
     "tailwindcss-safe-area": "^0.5.1",
