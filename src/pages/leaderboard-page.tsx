@@ -48,28 +48,32 @@ const LeaderboardPage = () => {
 
   return (
     <div>
-      <div className="pt-safe-offset-3 px-safe-offset-3 bg-[#38003c] pb-3 text-center text-[#ffffff] font-bold text-2xl">
-        Premier League 2023/24
+      <div className="pt-safe px-safe fixed left-0 right-0 top-0 bg-[#38003c] text-[#ffffff]">
+        <div className="flex h-16 flex-col items-center justify-center">
+          <div className="text-2xl font-bold">Premier League 2023/24</div>
+        </div>
       </div>
-      <div>LeaderboardPage</div>
-      <table>
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Player</th>
-            <th>Points</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.leaderboard.map((l) => (
-            <tr key={l.player.id}>
-              <td>{l.rank}</td>
-              <td>{l.player.name}</td>
-              <td>{l.totalPoints}</td>
+      <div className="pt-safe-offset-16">
+        <div>LeaderboardPage</div>
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Player</th>
+              <th>Points</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {data.leaderboard.map((l) => (
+              <tr key={l.player.id}>
+                <td>{l.rank}</td>
+                <td>{l.player.name}</td>
+                <td>{l.totalPoints}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
