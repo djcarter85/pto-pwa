@@ -113,7 +113,7 @@ const TournamentLayout = () => {
         tournamentCode={tournamentCode!}
         tournaments={tournaments}
       />
-      <div className="pt-safe-offset-16">
+      <div className="py-safe-offset-16">
         <Outlet />
       </div>
       <Nav tournamentCode={tournamentCode!} />
