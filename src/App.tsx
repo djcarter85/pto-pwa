@@ -8,6 +8,8 @@ import {
 import { NonPrivateRoutes, PrivateRoutes } from "./components/routes";
 import { LoginPage } from "./pages/login-page";
 import { getDashboardHomeUrl, getLoginUrl } from "./utils/urls";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { HomePage } from "./pages/dashboard/home-page";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,15 +19,21 @@ const router = createBrowserRouter(
         <Route path={getLoginUrl()} element={<LoginPage />} />
       </Route>
       <Route element={<PrivateRoutes />}>
-        <Route path={getDashboardHomeUrl()} element={<div>home</div>} />
+        <Route path={getDashboardHomeUrl()} element={<HomePage />} />
       </Route>
       <Route path="*" element={<div>404 not found</div>} />
     </>,
   ),
 );
 
+const queryClient = new QueryClient();
+
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 };
 
 export default App;
