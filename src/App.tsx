@@ -7,10 +7,15 @@ import {
 } from "react-router-dom";
 import { NonPrivateRoutes, PrivateRoutes } from "./components/routes";
 import { LoginPage } from "./pages/login-page";
-import { getDashboardHomeUrl, getLoginUrl } from "./utils/urls";
+import {
+  getDashboardHomeUrl,
+  getLoginUrl,
+  getDashboardLeaderboardUrl,
+} from "./utils/urls";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HomePage } from "./pages/dashboard/home-page";
 import { DashboardLayout } from "./layouts/dashboard-layout";
+import { LeaderboardPage } from "./pages/dashboard/leaderboard-page";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +27,10 @@ const router = createBrowserRouter(
       <Route element={<PrivateRoutes />}>
         <Route element={<DashboardLayout />}>
           <Route path={getDashboardHomeUrl()} element={<HomePage />} />
+          <Route
+            path={getDashboardLeaderboardUrl()}
+            element={<LeaderboardPage />}
+          />
         </Route>
       </Route>
       <Route path="*" element={<div>404 not found</div>} />
