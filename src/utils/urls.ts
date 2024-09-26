@@ -1,9 +1,19 @@
-const getLoginUrl = () => {
+export const getLoginUrl = () => {
   return "/login";
 };
 
-const getDashboardHomeUrl = () => {
+export const getDashboardHomeUrl = () => {
   return "/dashboard/home";
 };
 
-export { getLoginUrl, getDashboardHomeUrl };
+export const getDashboardPredictionsUrl = () => {
+  return "/dashboard/predictions";
+};
+
+export const getDashboardLeaderboardUrl = () => {
+  return "/dashboard/leaderboard";
+};
+
+export const getDashboardSettingsUrl = () => {
+  return "/dashboard/settings";
+};
