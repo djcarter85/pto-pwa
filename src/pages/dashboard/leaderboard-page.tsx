@@ -3,7 +3,7 @@ import { getLeaderboardPage } from "../../services/pto-api-service";
 
 export const LeaderboardPage = () => {
   const { data, error } = useQuery({
-    queryKey: ["home"],
+    queryKey: ["leaderboard"],
     queryFn: getLeaderboardPage,
   });
 
