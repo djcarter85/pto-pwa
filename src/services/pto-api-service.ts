@@ -1,5 +1,6 @@
 import axios from "axios";
 import { z } from "zod";
+import { getSession } from "./auth-service";
 
 const baseUrl = "https://api.pto.football";
 
@@ -8,8 +9,14 @@ const playerSchema = z.object({ id: z.string(), name: z.string() });
 const homePageSchema = z.object({ player: playerSchema });
 
 const getWithAuth = async (path: string) => {
+  const session = await getSession();
+
+  if (!session) {
+    throw new Error("Not logged in");
+  }
+
   return await axios.get(`${baseUrl}${path}`, {
-    headers: { Authorization: "Bearer " + localStorage.getItem("idToken") },
+    headers: { Authorization: "Bearer " + session.accessToken },
   });
 };
 
@@ -39,7 +46,9 @@ export const getPredictionsPage = async () => {
   const predictionsPageSchema = z.object({ player: playerSchema });
 
   // TODO: support any player
-  const response = await getWithAuth("/predictionsPage?playerId=375ec333-4ff2-4573-917c-f7336a611ff4");
+  const response = await getWithAuth(
+    "/predictionsPage?playerId=375ec333-4ff2-4573-917c-f7336a611ff4",
+  );
 
   return predictionsPageSchema.parse(response.data);
 };
