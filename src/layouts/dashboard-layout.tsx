@@ -3,10 +3,10 @@ import { Nav } from "../components/nav";
 
 const DashboardLayout = () => {
   return (
-    <div className="mb-16">
+    <main className="pt-safe pb-safe-offset-16">
       <Outlet />
       <Nav />
-    </div>
+    </main>
   );
 };
 

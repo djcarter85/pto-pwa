@@ -1,4 +1,5 @@
 import daisyui from "daisyui";
+import tail from "tailwindcss-safe-area";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
@@ -11,7 +12,7 @@ export default {
       },
     },
   },
-  plugins: [daisyui],
+  plugins: [daisyui, tail],
   daisyui: {
     themes: [
       {

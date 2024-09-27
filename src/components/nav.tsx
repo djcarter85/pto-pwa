@@ -37,7 +37,7 @@ const NavLink = ({
 
 const Nav = () => {
   return (
-    <nav className="btm-nav border-t">
+    <nav className="btm-nav border-t pb-safe">
       <NavLink to={getDashboardHomeUrl()} text="Home" icon={<House />} />
       <NavLink
         to={getDashboardPredictionsUrl()}
