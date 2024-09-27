@@ -11,7 +11,7 @@ const LoginPage = () => {
 
   const onLogInClick = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    
+
     const result = await logIn(email, password);
     if (result) {
       navigate(getDashboardHomeUrl());
@@ -19,7 +19,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
+    <main className="py-safe">
       <form onSubmit={onLogInClick}>
         <div>
           <input
@@ -45,7 +45,7 @@ const LoginPage = () => {
           <button type="submit">Log in</button>
         </div>
       </form>
-    </div>
+    </main>
   );
 };
 
