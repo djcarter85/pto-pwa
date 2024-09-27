@@ -15,7 +15,59 @@ const HomePage = () => {
     return <div>loading ...</div>;
   }
 
-  return <div>{data.player.name}</div>;
+  return (
+    <div>
+      <p>{data.player.name}</p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ex diam,
+        sollicitudin sed interdum eu, condimentum quis sapien. Morbi pharetra
+        porta nulla, eu mattis massa tristique a. Donec ultrices augue non est
+        semper, in ultrices sem porta. Aliquam sed augue fermentum odio
+        condimentum tincidunt sed vitae elit. Pellentesque at diam libero. Nulla
+        eu leo eros. Sed vitae diam augue. Etiam ut velit nisl.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ex diam,
+        sollicitudin sed interdum eu, condimentum quis sapien. Morbi pharetra
+        porta nulla, eu mattis massa tristique a. Donec ultrices augue non est
+        semper, in ultrices sem porta. Aliquam sed augue fermentum odio
+        condimentum tincidunt sed vitae elit. Pellentesque at diam libero. Nulla
+        eu leo eros. Sed vitae diam augue. Etiam ut velit nisl.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ex diam,
+        sollicitudin sed interdum eu, condimentum quis sapien. Morbi pharetra
+        porta nulla, eu mattis massa tristique a. Donec ultrices augue non est
+        semper, in ultrices sem porta. Aliquam sed augue fermentum odio
+        condimentum tincidunt sed vitae elit. Pellentesque at diam libero. Nulla
+        eu leo eros. Sed vitae diam augue. Etiam ut velit nisl.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ex diam,
+        sollicitudin sed interdum eu, condimentum quis sapien. Morbi pharetra
+        porta nulla, eu mattis massa tristique a. Donec ultrices augue non est
+        semper, in ultrices sem porta. Aliquam sed augue fermentum odio
+        condimentum tincidunt sed vitae elit. Pellentesque at diam libero. Nulla
+        eu leo eros. Sed vitae diam augue. Etiam ut velit nisl.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ex diam,
+        sollicitudin sed interdum eu, condimentum quis sapien. Morbi pharetra
+        porta nulla, eu mattis massa tristique a. Donec ultrices augue non est
+        semper, in ultrices sem porta. Aliquam sed augue fermentum odio
+        condimentum tincidunt sed vitae elit. Pellentesque at diam libero. Nulla
+        eu leo eros. Sed vitae diam augue. Etiam ut velit nisl.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ex diam,
+        sollicitudin sed interdum eu, condimentum quis sapien. Morbi pharetra
+        porta nulla, eu mattis massa tristique a. Donec ultrices augue non est
+        semper, in ultrices sem porta. Aliquam sed augue fermentum odio
+        condimentum tincidunt sed vitae elit. Pellentesque at diam libero. Nulla
+        eu leo eros. Sed vitae diam augue. Etiam ut velit nisl.
+      </p>
+    </div>
+  );
 };
 
 export { HomePage };
