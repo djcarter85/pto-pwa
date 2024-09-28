@@ -1,4 +1,3 @@
-import daisyui from "daisyui";
 import tail from "tailwindcss-safe-area";
 import defaultTheme from "tailwindcss/defaultTheme";
 
@@ -6,39 +5,43 @@ import defaultTheme from "tailwindcss/defaultTheme";
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    colors: {
+      black: "#000",
+      white: "#fff",
+      transparent: 'transparent',
+      current: 'currentColor',
+      blue: {
+        50: "#effaff",
+        100: "#daf3ff",
+        200: "#bdebff",
+        300: "#90dfff",
+        400: "#5ccbfe",
+        500: "#36affb",
+        600: "#2092f0",
+        700: "#197fe6",
+        800: "#1a62b3",
+        900: "#1b548d",
+        950: "#153356",
+      },
+      neutral: {
+        50: "#f5f8f8",
+        100: "#edf1f2",
+        200: "#dee5e7",
+        300: "#c9d4d8",
+        400: "#b2c0c7",
+        500: "#9eabb6",
+        600: "#8895a3",
+        700: "#737f8c",
+        800: "#606a73",
+        900: "#50575f",
+        950: "#2f3337",
+      },
+    },
     extend: {
       fontFamily: {
         sans: ["DM Sans", ...defaultTheme.fontFamily.sans],
       },
     },
   },
-  plugins: [daisyui, tail],
-  daisyui: {
-    themes: [
-      {
-        mytheme: {
-          primary: "#197fe6",
-          "primary-content": "#d1d5da",
-          secondary: "#95a5a6",
-          "secondary-content": "#080a0a",
-          accent: "#18bc9c",
-          "accent-content": "#000d09",
-          neutral: "#343a40",
-          "neutral-content": "#d2d4d5",
-          "base-100": "#f8f9fa",
-          "base-200": "#d8d9d9",
-          "base-300": "#b8b9ba",
-          "base-content": "#151515",
-          info: "#3498db",
-          "info-content": "#010811",
-          success: "#18bc9c",
-          "success-content": "#000d09",
-          warning: "#f39c12",
-          "warning-content": "#140900",
-          error: "#e74c3c",
-          "error-content": "#130201",
-        },
-      },
-    ],
-  },
+  plugins: [tail],
 };

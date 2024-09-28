@@ -25,8 +25,9 @@ const NavLink = ({
     <Link
       to={to}
       className={cx(
-        "flex flex-col items-center justify-center gap-1",
-        isActive && "active text-primary",
+        "flex h-full basis-full flex-col items-center justify-center gap-1",
+        isActive && "border-t-2 border-blue-700 text-blue-700",
+        !isActive && "pt-0.5",
       )}
     >
       <div className="text-xl">{icon}</div>
@@ -37,20 +38,26 @@ const NavLink = ({
 
 const Nav = () => {
   return (
-    <nav className="btm-nav border-t pb-safe">
-      <NavLink to={getDashboardHomeUrl()} text="Home" icon={<House />} />
-      <NavLink
-        to={getDashboardPredictionsUrl()}
-        text="Predictions"
-        icon={<QuestionSquare />}
-      />
-      <NavLink
-        to={getDashboardLeaderboardUrl()}
-        text="Leaderboard"
-        icon={<ListOl />}
-      />
-      <NavLink to={getDashboardSettingsUrl()} text="Settings" icon={<Gear />} />
-    </nav>
+    <footer className="fixed bottom-0 left-0 right-0 border-t border-t-neutral-300 bg-white pb-safe">
+      <nav className="mx-auto flex h-16 max-w-xl flex-row items-center justify-around">
+        <NavLink to={getDashboardHomeUrl()} text="Home" icon={<House />} />
+        <NavLink
+          to={getDashboardPredictionsUrl()}
+          text="Predictions"
+          icon={<QuestionSquare />}
+        />
+        <NavLink
+          to={getDashboardLeaderboardUrl()}
+          text="Leaderboard"
+          icon={<ListOl />}
+        />
+        <NavLink
+          to={getDashboardSettingsUrl()}
+          text="Settings"
+          icon={<Gear />}
+        />
+      </nav>
+    </footer>
   );
 };
 
