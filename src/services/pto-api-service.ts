@@ -4,7 +4,11 @@ import { getSession } from "./auth-service";
 
 const baseUrl = "https://api.pto.football";
 
-const playerSchema = z.object({ id: z.string(), name: z.string() });
+const playerSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  isHuman: z.boolean(),
+});
 
 const homePageSchema = z.object({ player: playerSchema });
 
@@ -31,8 +35,11 @@ export const getLeaderboardPage = async () => {
     leaderboard: z.array(
       z.object({
         rank: z.number(),
+        rankIsShared: z.boolean(),
         player: playerSchema,
+        matchesPredicted: z.number(),
         totalPoints: z.number(),
+        pointsPerMatch: z.number(),
       }),
     ),
   });
