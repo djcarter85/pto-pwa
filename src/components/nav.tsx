@@ -8,6 +8,7 @@ import {
 import { Gear, House, ListOl, QuestionSquare } from "react-bootstrap-icons";
 import { ReactNode } from "react";
 import cx from "classix";
+import { Container } from "./container";
 
 const NavLink = ({
   to,
@@ -39,24 +40,26 @@ const NavLink = ({
 const Nav = () => {
   return (
     <footer className="fixed bottom-0 left-0 right-0 border-t border-t-neutral-300 bg-white pb-safe">
-      <nav className="mx-auto flex h-16 max-w-xl flex-row items-center justify-around">
-        <NavLink to={getDashboardHomeUrl()} text="Home" icon={<House />} />
-        <NavLink
-          to={getDashboardPredictionsUrl()}
-          text="Predictions"
-          icon={<QuestionSquare />}
-        />
-        <NavLink
-          to={getDashboardLeaderboardUrl()}
-          text="Leaderboard"
-          icon={<ListOl />}
-        />
-        <NavLink
-          to={getDashboardSettingsUrl()}
-          text="Settings"
-          icon={<Gear />}
-        />
-      </nav>
+      <Container>
+        <nav className="flex h-16 flex-row items-center justify-around">
+          <NavLink to={getDashboardHomeUrl()} text="Home" icon={<House />} />
+          <NavLink
+            to={getDashboardPredictionsUrl()}
+            text="Predictions"
+            icon={<QuestionSquare />}
+          />
+          <NavLink
+            to={getDashboardLeaderboardUrl()}
+            text="Leaderboard"
+            icon={<ListOl />}
+          />
+          <NavLink
+            to={getDashboardSettingsUrl()}
+            text="Settings"
+            icon={<Gear />}
+          />
+        </nav>
+      </Container>
     </footer>
   );
 };
