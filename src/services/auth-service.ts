@@ -19,14 +19,11 @@ export const getSession = async () => {
   let idToken = localStorage.getItem("idToken");
   let refreshToken = localStorage.getItem("refreshToken");
 
-  console.log(idToken);
-
   if (!idToken || !refreshToken) {
     return null;
   }
 
   const decodedIdToken = jwtDecode(idToken);
-  console.log(decodedIdToken);
 
   if (!decodedIdToken.exp) {
     return null;
