@@ -59,3 +59,11 @@ export const getPredictionsPage = async () => {
 
   return predictionsPageSchema.parse(response.data);
 };
+
+export const getAccountPage = async () => {
+  const accountPageSchema = z.object({ emailAddress: z.string() });
+
+  const response = await getWithAuth("/accountPage");
+
+  return accountPageSchema.parse(response.data);
+};
