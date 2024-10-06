@@ -4,8 +4,8 @@ import { Container } from "../components/container";
 
 const DashboardLayout = () => {
   return (
-    <main className="pt-safe pb-safe-offset-16 h-full">
-      <Container className="h-full">
+    <main className="pt-safe pb-safe-offset-16">
+      <Container>
         <Outlet />
       </Container>
       <Nav />

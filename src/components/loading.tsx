@@ -1,6 +1,6 @@
 export const Loading = () => {
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-6">
+    <div className="flex flex-col items-center justify-center gap-6 my-10">
       <svg
         className="size-16 animate-spin"
         xmlns="http://www.w3.org/2000/svg"
@@ -13,7 +13,7 @@ export const Loading = () => {
           cy="12"
           r="10"
           stroke="currentColor"
-          stroke-width="4"
+          strokeWidth="4"
         ></circle>
         <path
           className="opacity-75"
