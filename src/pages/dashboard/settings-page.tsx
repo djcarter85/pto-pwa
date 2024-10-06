@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { logOut } from "../../services/auth-service";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
+import { Loading } from "../../components/loading";
 
 export const SettingsPage = () => {
   const [redirectToLogin, setRedirectToLogin] = useState(false);
@@ -21,7 +22,7 @@ export const SettingsPage = () => {
   }
 
   if (!data) {
-    return <div>loading ...</div>;
+    return <Loading />;
   }
 
   const onLogOut = () => {

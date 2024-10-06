@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getHomePage } from "../../services/pto-api-service";
+import { Loading } from "../../components/loading";
 
 const HomePage = () => {
   const { data, error } = useQuery({
@@ -12,7 +13,7 @@ const HomePage = () => {
   }
 
   if (!data) {
-    return <div>loading ...</div>;
+    return <Loading />;
   }
 
   return (

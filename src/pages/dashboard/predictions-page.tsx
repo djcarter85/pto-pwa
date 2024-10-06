@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getPredictionsPage } from "../../services/pto-api-service";
+import { Loading } from "../../components/loading";
 
 export const PredictionsPage = () => {
   const { data, error } = useQuery({
@@ -12,7 +13,7 @@ export const PredictionsPage = () => {
   }
 
   if (!data) {
-    return <div>loading ...</div>;
+    return <Loading />;
   }
 
   return <div>{data.player.name}</div>;

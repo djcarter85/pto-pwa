@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getLeaderboardPage } from "../../services/pto-api-service";
 import cx from "classix";
+import { Loading } from "../../components/loading";
 
 export const LeaderboardPage = () => {
   const { data, error } = useQuery({
@@ -13,7 +14,7 @@ export const LeaderboardPage = () => {
   }
 
   if (!data) {
-    return <div>loading ...</div>;
+    return <Loading />;
   }
 
   return (
