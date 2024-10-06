@@ -18,8 +18,12 @@ export const LeaderboardPage = () => {
   }
 
   return (
-    <div className="my-4">
-      <table className="w-full">
+    <div className="flex flex-col">
+      <div className="px-3 py-3 text-center bg-gradient-to-br from-blue-800 to-blue-700 text-blue-50">
+        <div className="text-2xl font-bold">{data.tournament.name}</div>
+        <div className="text-lg">{data.round?.name ?? "Overall"}</div>
+      </div>
+      <table className="w-full mb-3">
         <thead>
           <tr className="">
             <th className="px-3 py-1 text-left">#</th>
@@ -37,7 +41,10 @@ export const LeaderboardPage = () => {
                 {x.rankIsShared && "="}
               </td>
               <td
-                className={cx("px-3 py-1 text-left", x.player.isHuman || "italic")}
+                className={cx(
+                  "px-3 py-1 text-left",
+                  x.player.isHuman || "italic",
+                )}
               >
                 {x.player.name}
               </td>

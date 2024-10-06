@@ -42,6 +42,8 @@ export const getLeaderboardPage = async () => {
         pointsPerMatch: z.number(),
       }),
     ),
+    tournament: z.object({ name: z.string() }),
+    round: z.optional(z.object({ name: z.string() })),
   });
 
   const response = await getWithAuth("/leaderboardPage");
