@@ -18,7 +18,7 @@ export const LeaderboardPage = () => {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-1">
       <div className="px-3 py-3 text-center bg-gradient-to-br from-blue-800 to-blue-700 text-blue-50">
         <div className="text-2xl font-bold">{data.tournament.name}</div>
         <div className="text-lg">{data.round?.name ?? "Overall"}</div>
