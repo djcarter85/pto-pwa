@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getLeaderboardPage } from "../../services/pto-api-service";
 import cx from "classix";
 import { Loading } from "../../components/loading";
+import { Header } from "../../components/header";
 
 export const LeaderboardPage = () => {
   const { data, error } = useQuery({
@@ -19,11 +20,11 @@ export const LeaderboardPage = () => {
 
   return (
     <div className="flex flex-col gap-1">
-      <div className="px-3 py-3 text-center bg-gradient-to-br from-blue-800 to-blue-700 text-blue-50">
-        <div className="text-2xl font-bold">{data.tournament.name}</div>
-        <div className="text-lg">{data.round?.name ?? "Overall"}</div>
-      </div>
-      <table className="w-full mb-3">
+      <Header
+        tournamentName={data.tournament.name}
+        roundName={data.round?.name}
+      />
+      <table className="mb-3 w-full">
         <thead>
           <tr className="">
             <th className="px-3 py-1 text-left">#</th>
