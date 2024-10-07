@@ -10,7 +10,15 @@ const playerSchema = z.object({
   isHuman: z.boolean(),
 });
 
-const homePageSchema = z.object({ player: playerSchema });
+const tournamentSchema = z.object({ name: z.string() });
+
+const roundSchema = z.object({ name: z.string() });
+
+const teamSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  shortName: z.string(),
+});
 
 const getWithAuth = async (path: string) => {
   const session = await getSession();
@@ -25,6 +33,8 @@ const getWithAuth = async (path: string) => {
 };
 
 export const getHomePage = async () => {
+  const homePageSchema = z.object({ player: playerSchema });
+
   const response = await getWithAuth("/homePage");
 
   return homePageSchema.parse(response.data);
@@ -42,8 +52,8 @@ export const getLeaderboardPage = async () => {
         pointsPerMatch: z.number(),
       }),
     ),
-    tournament: z.object({ name: z.string() }),
-    round: z.optional(z.object({ name: z.string() })),
+    tournament: tournamentSchema,
+    round: z.optional(roundSchema),
   });
 
   const response = await getWithAuth("/leaderboardPage");
@@ -52,7 +62,25 @@ export const getLeaderboardPage = async () => {
 };
 
 export const getPredictionsPage = async () => {
-  const predictionsPageSchema = z.object({ player: playerSchema });
+  const predictionsPageSchema = z.object({
+    player: playerSchema,
+    tournament: tournamentSchema,
+    round: roundSchema,
+    matchGroups: z.array(
+      z.object({
+        date: z.string(),
+        matchPredictions: z.array(
+          z.object({
+            match: z.object({
+              id: z.string(),
+              homeTeam: teamSchema,
+              awayTeam: teamSchema,
+            }),
+          }),
+        ),
+      }),
+    ),
+  });
 
   // TODO: support any player
   const response = await getWithAuth(
