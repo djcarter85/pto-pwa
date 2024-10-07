@@ -5,7 +5,7 @@ export const Loading = () => {
         <circle
           className="opacity-25"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
           cx="12"
           cy="12"
           r="11"
