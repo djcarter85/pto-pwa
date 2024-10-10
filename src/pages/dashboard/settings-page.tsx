@@ -31,7 +31,7 @@ export const SettingsPage = () => {
   };
 
   return (
-    <div className="my-4 flex flex-col gap-2 px-4">
+    <div className="flex flex-col gap-2 p-4">
       <div>
         <span>You are logged in as {data.emailAddress}</span>
       </div>
