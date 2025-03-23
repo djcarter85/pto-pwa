@@ -1,3 +1,57 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-safe-area';
+
+@theme {
+  --color-*: initial;
+  --color-black: #000;
+  --color-white: #fff;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --color-blue-50: #effaff;
+  --color-blue-100: #daf3ff;
+  --color-blue-200: #bdebff;
+  --color-blue-300: #90dfff;
+  --color-blue-400: #5ccbfe;
+  --color-blue-500: #36affb;
+  --color-blue-600: #2092f0;
+  --color-blue-700: #197fe6;
+  --color-blue-800: #1a62b3;
+  --color-blue-900: #1b548d;
+  --color-blue-950: #153356;
+
+  --color-neutral-50: #f5f8f8;
+  --color-neutral-100: #edf1f2;
+  --color-neutral-200: #dee5e7;
+  --color-neutral-300: #c9d4d8;
+  --color-neutral-400: #b2c0c7;
+  --color-neutral-500: #9eabb6;
+  --color-neutral-600: #8895a3;
+  --color-neutral-700: #737f8c;
+  --color-neutral-800: #606a73;
+  --color-neutral-900: #50575f;
+  --color-neutral-950: #2f3337;
+
+  --font-sans:
+    DM Sans, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
