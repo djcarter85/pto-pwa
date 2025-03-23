@@ -1,6 +1,7 @@
 import axios from "axios";
 import { z } from "zod";
 import { getSession } from "./auth-service";
+import { DateTime } from "luxon";
 
 const baseUrl = "https://api.pto.football";
 
@@ -8,6 +9,16 @@ const playerSchema = z.object({
   id: z.string(),
   name: z.string(),
   isHuman: z.boolean(),
+});
+
+const dateSchema = z
+  .string()
+  .transform((x) => DateTime.fromISO(x))
+  .refine((d) => d.isValid, "Invalid DateTime.");
+
+const scoreSchema = z.object({
+  home: z.number(),
+  away: z.number(),
 });
 
 const tournamentSchema = z.object({ name: z.string() });
@@ -68,7 +79,7 @@ export const getPredictionsPage = async () => {
     round: roundSchema,
     matchGroups: z.array(
       z.object({
-        date: z.string(),
+        date: dateSchema,
         matchPredictions: z.array(
           z.object({
             match: z.object({
@@ -76,6 +87,7 @@ export const getPredictionsPage = async () => {
               homeTeam: teamSchema,
               awayTeam: teamSchema,
             }),
+            predictedScore: scoreSchema.optional(),
           }),
         ),
       }),
