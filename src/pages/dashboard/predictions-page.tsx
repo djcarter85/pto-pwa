@@ -3,8 +3,24 @@ import { getPredictionsPage } from "../../services/pto-api-service";
 import { Loading } from "../../components/loading";
 import { Header } from "../../components/header";
 import { PersonFill } from "react-bootstrap-icons";
-import { Fragment } from "react";
 import { formatDate } from "../../utils/formats";
+
+const Team = ({ team }: { team: { id: number; name: string } }) => {
+  return (
+    <div className="inline-flex flex-row items-center gap-2">
+      <img src={`/assets/teams/logo-${team.id}.svg`} className="size-8" />
+      <div>{team.name}</div>
+    </div>
+  );
+};
+
+const ScoreValue = ({ score }: { score?: number }) => {
+  return (
+    <div className="flex size-8 items-center justify-center rounded-md bg-neutral-200">
+      <span>{score ?? ""}</span>
+    </div>
+  );
+};
 
 export const PredictionsPage = () => {
   const { data, error } = useQuery({
@@ -30,32 +46,29 @@ export const PredictionsPage = () => {
         <PersonFill />
         <span>{data.player.name}</span>
       </div>
-      <div className="grid grid-cols-[1fr_auto_1fr] gap-x-2">
-        {data.matchGroups.map((mg) => (
-          <div
-            key={mg.date.toISO()}
-            className="col-span-3 grid grid-cols-subgrid"
-          >
-            <div className="col-span-3 my-2 px-1 text-center text-lg font-bold">
-              {formatDate(mg.date)}
-            </div>
-            {mg.matchPredictions.map((mp) => (
-              <Fragment key={mp.match.id}>
-                <div className="px-1 text-right">{mp.match.homeTeam.name}</div>
-                <div className="px-1 text-center">
-                  {mp.predictedScore ? (
-                    <span>
-                      {mp.predictedScore.home}-{mp.predictedScore.away}
-                    </span>
-                  ) : (
-                    <>&nbsp;</>
-                  )}
+      <div>
+        {data.matchGroups
+          .toSorted((a, b) => a.date.toUnixInteger() - b.date.toUnixInteger())
+          .map((mg) => (
+            <div key={mg.date.toISO()}>
+              <div className="my-2 px-1 text-center text-lg font-bold">
+                {formatDate(mg.date)}
+              </div>
+              {mg.matchPredictions.toSorted((a, b)=> a.match.kickoff.toUnixInteger() - b.match.kickoff.toUnixInteger()).map((mp) => (
+                <div
+                  key={mp.match.id}
+                  className="my-1 grid grid-cols-[1fr_auto_auto] items-center gap-x-3 gap-y-2 bg-neutral-100 px-3 py-2"
+                >
+                  <Team team={mp.match.homeTeam} />
+                  <ScoreValue score={mp.predictedScore?.home} />
+                  <ScoreValue score={mp.match.finalScore?.home} />
+                  <Team team={mp.match.awayTeam} />
+                  <ScoreValue score={mp.predictedScore?.away} />
+                  <ScoreValue score={mp.match.finalScore?.away} />
                 </div>
-                <div className="px-1 text-left">{mp.match.awayTeam.name}</div>
-              </Fragment>
-            ))}
-          </div>
-        ))}
+              ))}
+            </div>
+          ))}
       </div>
     </div>
   );

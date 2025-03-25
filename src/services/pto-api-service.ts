@@ -16,6 +16,11 @@ const dateSchema = z
   .transform((x) => DateTime.fromISO(x))
   .refine((d) => d.isValid, "Invalid DateTime.");
 
+const dateTimeUtcSchema = z
+  .string()
+  .transform((x) => DateTime.fromISO(x))
+  .refine((d) => d.isValid, "Invalid DateTime.");
+
 const scoreSchema = z.object({
   home: z.number(),
   away: z.number(),
@@ -86,6 +91,8 @@ export const getPredictionsPage = async () => {
               id: z.string(),
               homeTeam: teamSchema,
               awayTeam: teamSchema,
+              kickoff: dateTimeUtcSchema,
+              finalScore: scoreSchema.optional(),
             }),
             predictedScore: scoreSchema.optional(),
           }),
