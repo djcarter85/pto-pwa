@@ -1,10 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { getPredictionsPage } from "../../services/pto-api-service";
 import { Loading } from "../../components/loading";
-import { Header } from "../../components/header";
-import { PersonFill } from "react-bootstrap-icons";
+import { ClockFill, PersonFill, TrophyFill } from "react-bootstrap-icons";
 import { formatDate } from "../../utils/formats";
-import { Fragment } from "react";
+import { Fragment, ReactNode } from "react";
 
 const Team = ({ team }: { team: { id: number; name: string } }) => {
   return (
@@ -35,6 +34,14 @@ const getPointsText = (points?: number) => {
   return `${points} pts`;
 };
 
+const Foo = ({ children }: { children: ReactNode }) => {
+  return (
+    <div className="flex size-8 items-center justify-center rounded-full bg-blue-800 text-neutral-100">
+      {children}
+    </div>
+  );
+};
+
 export const PredictionsPage = () => {
   const { data, error } = useQuery({
     queryKey: ["predictions"],
@@ -51,20 +58,26 @@ export const PredictionsPage = () => {
 
   return (
     <div className="flex flex-col">
-      <Header
-        tournamentName={data.tournament.name}
-        roundName={data.round?.name}
-      />
-      <div className="my-2 flex flex-row items-center gap-x-2 px-2 text-lg">
-        <PersonFill />
-        <span>{data.player.name}</span>
+      <div className="grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-2 border-b border-b-neutral-600 px-4 py-4 text-lg">
+        <Foo>
+          <TrophyFill />
+        </Foo>
+        <div>{data.tournament.name}</div>
+        <Foo>
+          <ClockFill />
+        </Foo>
+        <div>{data.round.name}</div>
+        <Foo>
+          <PersonFill />
+        </Foo>
+        <div>{data.player.name}</div>
       </div>
-      <div className="grid grid-cols-[1fr_auto_auto_auto]">
+      <div className="my-2 grid grid-cols-[1fr_auto_auto_auto]">
         {data.matchGroups
           .toSorted((a, b) => a.date.toUnixInteger() - b.date.toUnixInteger())
           .map((mg) => (
             <Fragment key={mg.date.toISO()}>
-              <div className="col-span-4 my-2 px-1 text-center text-lg font-bold">
+              <div className="col-span-4 my-2 px-1 text-center text-lg">
                 {formatDate(mg.date)}
               </div>
               {mg.matchPredictions
@@ -87,7 +100,9 @@ export const PredictionsPage = () => {
                     <Team team={mp.match.awayTeam} />
                     <ScoreValue score={mp.predictedScore?.away} />
                     <ScoreValue score={mp.match.finalScore?.away} />
-                    <div className="text-center text-sm">{getPointsText(mp.points)}</div>
+                    <div className="text-center text-sm">
+                      {getPointsText(mp.points)}
+                    </div>
                   </div>
                 ))}
             </Fragment>
