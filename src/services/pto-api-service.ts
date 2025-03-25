@@ -95,6 +95,7 @@ export const getPredictionsPage = async () => {
               finalScore: scoreSchema.optional(),
             }),
             predictedScore: scoreSchema.optional(),
+            points: z.number().optional(),
           }),
         ),
       }),

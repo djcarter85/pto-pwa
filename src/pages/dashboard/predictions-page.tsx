@@ -4,6 +4,7 @@ import { Loading } from "../../components/loading";
 import { Header } from "../../components/header";
 import { PersonFill } from "react-bootstrap-icons";
 import { formatDate } from "../../utils/formats";
+import { Fragment } from "react";
 
 const Team = ({ team }: { team: { id: number; name: string } }) => {
   return (
@@ -20,6 +21,18 @@ const ScoreValue = ({ score }: { score?: number }) => {
       <span>{score ?? ""}</span>
     </div>
   );
+};
+
+const getPointsText = (points?: number) => {
+  if (points === undefined) {
+    return null;
+  }
+
+  if (points === 1) {
+    return "1 pt";
+  }
+
+  return `${points} pts`;
 };
 
 export const PredictionsPage = () => {
@@ -46,28 +59,38 @@ export const PredictionsPage = () => {
         <PersonFill />
         <span>{data.player.name}</span>
       </div>
-      <div>
+      <div className="grid grid-cols-[1fr_auto_auto_auto]">
         {data.matchGroups
           .toSorted((a, b) => a.date.toUnixInteger() - b.date.toUnixInteger())
           .map((mg) => (
-            <div key={mg.date.toISO()}>
-              <div className="my-2 px-1 text-center text-lg font-bold">
+            <Fragment key={mg.date.toISO()}>
+              <div className="col-span-4 my-2 px-1 text-center text-lg font-bold">
                 {formatDate(mg.date)}
               </div>
-              {mg.matchPredictions.toSorted((a, b)=> a.match.kickoff.toUnixInteger() - b.match.kickoff.toUnixInteger()).map((mp) => (
-                <div
-                  key={mp.match.id}
-                  className="my-1 grid grid-cols-[1fr_auto_auto] items-center gap-x-3 gap-y-2 bg-neutral-100 px-3 py-2"
-                >
-                  <Team team={mp.match.homeTeam} />
-                  <ScoreValue score={mp.predictedScore?.home} />
-                  <ScoreValue score={mp.match.finalScore?.home} />
-                  <Team team={mp.match.awayTeam} />
-                  <ScoreValue score={mp.predictedScore?.away} />
-                  <ScoreValue score={mp.match.finalScore?.away} />
-                </div>
-              ))}
-            </div>
+              {mg.matchPredictions
+                .toSorted(
+                  (a, b) =>
+                    a.match.kickoff.toUnixInteger() -
+                    b.match.kickoff.toUnixInteger(),
+                )
+                .map((mp) => (
+                  <div
+                    key={mp.match.id}
+                    className="col-span-4 my-1 grid grid-cols-subgrid items-center gap-x-3 gap-y-2 bg-neutral-100 px-3 py-2"
+                  >
+                    <Team team={mp.match.homeTeam} />
+                    <ScoreValue score={mp.predictedScore?.home} />
+                    <ScoreValue score={mp.match.finalScore?.home} />
+                    <div className="text-center text-sm">
+                      {mp.match.kickoff.toFormat("HH:mm")}
+                    </div>
+                    <Team team={mp.match.awayTeam} />
+                    <ScoreValue score={mp.predictedScore?.away} />
+                    <ScoreValue score={mp.match.finalScore?.away} />
+                    <div className="text-center text-sm">{getPointsText(mp.points)}</div>
+                  </div>
+                ))}
+            </Fragment>
           ))}
       </div>
     </div>
