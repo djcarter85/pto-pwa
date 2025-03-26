@@ -5,18 +5,13 @@ import { formatDate } from "../../utils/formats";
 import { Fragment } from "react";
 import { Header } from "../../components/header";
 
-const Team = ({ team }: { team: { id: number; name: string } }) => {
-  return (
-    <div className="inline-flex flex-row items-center gap-2">
-      <img src={`/assets/teams/logo-${team.id}.svg`} className="size-8" />
-      <div>{team.name}</div>
-    </div>
-  );
+const TeamImage = ({ teamId }: { teamId: number }) => {
+  return <img src={`/assets/teams/logo-${teamId}.svg`} className="size-8" />;
 };
 
 const ScoreValue = ({ score }: { score?: number }) => {
   return (
-    <div className="flex size-8 items-center justify-center rounded-md bg-neutral-200">
+    <div className="flex size-8 items-center justify-center rounded-md bg-neutral-100">
       <span>{score ?? ""}</span>
     </div>
   );
@@ -55,12 +50,12 @@ export const PredictionsPage = () => {
         roundName={data.round.name}
         playerName={data.player.name}
       />
-      <div className="my-2 grid grid-cols-[1fr_auto_auto_auto]">
+      <div className="my-2 grid grid-cols-[auto_1fr_auto_auto_auto] gap-y-4">
         {data.matchGroups
           .toSorted((a, b) => a.date.toUnixInteger() - b.date.toUnixInteger())
           .map((mg) => (
             <Fragment key={mg.date.toISO()}>
-              <div className="col-span-4 my-2 px-1 text-center text-lg">
+              <div className="col-span-5 text-center text-lg">
                 {formatDate(mg.date)}
               </div>
               {mg.matchPredictions
@@ -72,15 +67,17 @@ export const PredictionsPage = () => {
                 .map((mp) => (
                   <div
                     key={mp.match.id}
-                    className="col-span-4 my-1 grid grid-cols-subgrid items-center gap-x-3 gap-y-2 bg-neutral-100 px-3 py-2"
+                    className="col-span-5 grid grid-cols-subgrid items-center gap-x-3 gap-y-2 px-3 py-2"
                   >
-                    <Team team={mp.match.homeTeam} />
+                    <TeamImage teamId={mp.match.homeTeam.id} />
+                    <div>{mp.match.homeTeam.name}</div>
                     <ScoreValue score={mp.predictedScore?.home} />
                     <ScoreValue score={mp.match.finalScore?.home} />
                     <div className="text-center text-sm">
                       {mp.match.kickoff.toFormat("HH:mm")}
                     </div>
-                    <Team team={mp.match.awayTeam} />
+                    <TeamImage teamId={mp.match.awayTeam.id} />
+                    <div>{mp.match.awayTeam.name}</div>
                     <ScoreValue score={mp.predictedScore?.away} />
                     <ScoreValue score={mp.match.finalScore?.away} />
                     <div className="text-center text-sm">
