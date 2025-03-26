@@ -37,7 +37,7 @@ export const SettingsPage = () => {
       </div>
       <div>
         <button
-          className="rounded-sm bg-blue-800 px-4 py-2 text-blue-50 hover:bg-blue-900"
+          className="rounded-sm bg-blue-700 px-4 py-2 text-blue-50 hover:bg-blue-800"
           onClick={onLogOut}
         >
           Log out

@@ -3,7 +3,7 @@ import { TrophyFill, ClockFill, PersonFill } from "react-bootstrap-icons";
 
 const IconWrapper = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="flex size-8 items-center justify-center rounded-full bg-blue-800 text-neutral-100">
+    <div className="flex size-8 items-center justify-center rounded-full bg-blue-700 text-neutral-100">
       {children}
     </div>
   );
