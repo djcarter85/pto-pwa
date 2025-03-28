@@ -69,7 +69,7 @@ export const getLeaderboardPage = async () => {
       }),
     ),
     tournament: tournamentSchema,
-    round: z.optional(roundSchema),
+    round: roundSchema.nullable(),
   });
 
   const response = await getWithAuth("/leaderboardPage");
@@ -92,10 +92,10 @@ export const getPredictionsPage = async () => {
               homeTeam: teamSchema,
               awayTeam: teamSchema,
               kickoff: dateTimeUtcSchema,
-              finalScore: scoreSchema.optional(),
+              finalScore: scoreSchema.nullable(),
             }),
-            predictedScore: scoreSchema.optional(),
-            points: z.number().optional(),
+            predictedScore: scoreSchema.nullable(),
+            points: z.number().nullable(),
           }),
         ),
       }),
