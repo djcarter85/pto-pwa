@@ -18,7 +18,7 @@ const ScoreValue = ({ score }: { score?: number }) => {
 };
 
 const getPointsText = (points: number | null) => {
-  if (points === undefined) {
+  if (points === null) {
     return null;
   }
 
