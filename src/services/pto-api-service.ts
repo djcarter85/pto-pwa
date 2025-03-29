@@ -103,9 +103,7 @@ export const getPredictionsPage = async () => {
   });
 
   // TODO: support any player
-  const response = await getWithAuth(
-    "/predictionsPage?playerId=375ec333-4ff2-4573-917c-f7336a611ff4",
-  );
+  const response = await getWithAuth("/predictionsPage");
 
   return predictionsPageSchema.parse(response.data);
 };
