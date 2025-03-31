@@ -4,6 +4,7 @@ import { HTMLInputAutoCompleteAttribute, HTMLInputTypeAttribute } from "react";
 export const Input = ({
   id,
   type,
+  inputMode,
   autoComplete,
   value,
   setValue,
@@ -13,6 +14,7 @@ export const Input = ({
 }: {
   id: string;
   type: HTMLInputTypeAttribute;
+  inputMode?: "numeric" | undefined;
   autoComplete?: HTMLInputAutoCompleteAttribute;
   value: string | number | undefined;
   setValue: (value: string) => void;
@@ -25,6 +27,7 @@ export const Input = ({
       id={id}
       name={id}
       type={type}
+      inputMode={inputMode}
       value={value}
       onChange={(e) => setValue(e.target.value)}
       placeholder={placeholder}

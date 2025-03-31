@@ -75,6 +75,7 @@ export const PredictionsPage = () => {
                     <Input
                       id={`pred-home-${mp.match.id}`}
                       type="number"
+                      inputMode="numeric"
                       value={mp.predictedScore?.home}
                       setValue={() => {}}
                       className="size-8 text-center"
@@ -88,6 +89,7 @@ export const PredictionsPage = () => {
                     <Input
                       id={`pred-away-${mp.match.id}`}
                       type="number"
+                      inputMode="numeric"
                       value={mp.predictedScore?.away}
                       setValue={() => {}}
                       className="size-8 text-center"
