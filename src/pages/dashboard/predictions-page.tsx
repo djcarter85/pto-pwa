@@ -12,7 +12,7 @@ const TeamImage = ({ teamId }: { teamId: number }) => {
 
 const ScoreValue = ({ score }: { score?: number }) => {
   return (
-    <div className="flex size-8 items-center justify-center rounded-md bg-neutral-100">
+    <div className="flex size-9 items-center justify-center rounded-md bg-neutral-100">
       <span>{score ?? ""}</span>
     </div>
   );
@@ -68,7 +68,7 @@ export const PredictionsPage = () => {
                 .map((mp) => (
                   <div
                     key={mp.match.id}
-                    className="col-span-5 grid grid-cols-subgrid items-center gap-x-3 gap-y-2 px-3 py-2"
+                    className="col-span-5 grid grid-cols-subgrid items-center gap-x-3 gap-y-1 px-3 py-2"
                   >
                     <TeamImage teamId={mp.match.homeTeam.id} />
                     <div>{mp.match.homeTeam.name}</div>
@@ -78,7 +78,7 @@ export const PredictionsPage = () => {
                       inputMode="numeric"
                       value={mp.predictedScore?.home}
                       setValue={() => {}}
-                      className="size-8 text-center"
+                      className="size-9 text-center"
                     />
                     <ScoreValue score={mp.match.finalScore?.home} />
                     <div className="text-center text-sm">
@@ -92,7 +92,7 @@ export const PredictionsPage = () => {
                       inputMode="numeric"
                       value={mp.predictedScore?.away}
                       setValue={() => {}}
-                      className="size-8 text-center"
+                      className="size-9 text-center"
                     />
                     <ScoreValue score={mp.match.finalScore?.away} />
                     <div className="text-center text-sm">
