@@ -26,9 +26,9 @@ const scoreSchema = z.object({
   away: z.number(),
 });
 
-const tournamentSchema = z.object({ name: z.string() });
+const tournamentSchema = z.object({ name: z.string(), shortName: z.string() });
 
-const roundSchema = z.object({ name: z.string() });
+const roundSchema = z.object({ name: z.string(), shortName: z.string() });
 
 const teamSchema = z.object({
   id: z.number(),

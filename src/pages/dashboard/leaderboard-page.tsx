@@ -21,8 +21,8 @@ export const LeaderboardPage = () => {
   return (
     <div className="flex flex-col gap-1">
       <Header
-        tournamentName={data.tournament.name}
-        roundName={data.round?.name}
+        tournamentName={data.tournament.shortName}
+        roundName={data.round?.shortName ?? "Overall"}
       />
       <table className="mb-3 w-full">
         <thead>

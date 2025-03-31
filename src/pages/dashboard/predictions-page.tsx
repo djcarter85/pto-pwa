@@ -47,8 +47,8 @@ export const PredictionsPage = () => {
   return (
     <div className="flex flex-col">
       <Header
-        tournamentName={data.tournament.name}
-        roundName={data.round.name}
+        tournamentName={data.tournament.shortName}
+        roundName={data.round.shortName}
         playerName={data.player.name}
       />
       <div className="my-2 grid grid-cols-[auto_1fr_auto_auto_auto] gap-y-4">

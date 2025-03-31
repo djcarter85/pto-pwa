@@ -1,13 +1,4 @@
-import { ReactNode } from "react";
-import { TrophyFill, ClockFill, PersonFill } from "react-bootstrap-icons";
-
-const IconWrapper = ({ children }: { children: ReactNode }) => {
-  return (
-    <div className="flex size-8 items-center justify-center rounded-full bg-blue-700 text-neutral-100">
-      {children}
-    </div>
-  );
-};
+import { Trophy, Clock, Person } from "react-bootstrap-icons";
 
 export const Header = ({
   tournamentName,
@@ -15,29 +6,19 @@ export const Header = ({
   playerName,
 }: {
   tournamentName: string;
-  roundName?: string;
+  roundName: string;
   playerName?: string;
 }) => {
   return (
-    <div className="grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-2 border-b border-b-neutral-600 px-4 py-4 text-lg">
-      <IconWrapper>
-        <TrophyFill />
-      </IconWrapper>
+    <div className="grid grid-cols-[auto_1fr_auto_1fr] items-center gap-x-3 gap-y-2 border-b border-b-neutral-600 px-4 py-4 text-lg">
+      <Trophy />
       <div>{tournamentName}</div>
-      {roundName && (
-        <>
-          <IconWrapper>
-            <ClockFill />
-          </IconWrapper>
-          <div>{roundName}</div>
-        </>
-      )}
+      <Clock />
+      <div>{roundName}</div>
       {playerName && (
         <>
-          <IconWrapper>
-            <PersonFill />
-          </IconWrapper>
-          <div>{playerName}</div>
+          <Person />
+          <div className="col-span-3">{playerName}</div>
         </>
       )}
     </div>
