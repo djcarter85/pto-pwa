@@ -3,6 +3,7 @@ import { logIn } from "../services/auth-service";
 import { getDashboardHomeUrl } from "../utils/urls";
 import { useState } from "react";
 import { Container } from "../components/container";
+import { Input } from "../components/input";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -24,30 +25,26 @@ const LoginPage = () => {
       <Container className="flex min-h-dvh flex-col justify-center px-6">
         <form onSubmit={onLogInClick} className="space-y-6">
           <div>
-            <input
+            <Input
               id="email"
-              name="email"
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
+              setValue={setEmail}
               autoComplete="email"
-              required
-              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-neutral-900 outline-1 -outline-offset-1 outline-neutral-300 placeholder:text-neutral-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+              placeholder="Email"
+              required={true}
             />
           </div>
 
           <div>
-            <input
+            <Input
               id="password"
-              name="password"
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
+              setValue={setPassword}
               autoComplete="current-password"
-              required
-              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-neutral-900 outline-1 -outline-offset-1 outline-neutral-300 placeholder:text-neutral-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+              placeholder="Password"
+              required={true}
             />
           </div>
 
