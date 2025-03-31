@@ -4,6 +4,7 @@ import { Loading } from "../../components/loading";
 import { formatDate } from "../../utils/formats";
 import { Fragment } from "react";
 import { Header } from "../../components/header";
+import { Input } from "../../components/input";
 
 const TeamImage = ({ teamId }: { teamId: number }) => {
   return <img src={`/assets/teams/logo-${teamId}.svg`} className="size-8" />;
@@ -71,14 +72,26 @@ export const PredictionsPage = () => {
                   >
                     <TeamImage teamId={mp.match.homeTeam.id} />
                     <div>{mp.match.homeTeam.name}</div>
-                    <ScoreValue score={mp.predictedScore?.home} />
+                    <Input
+                      id={`pred-home-${mp.match.id}`}
+                      type="number"
+                      value={mp.predictedScore?.home}
+                      setValue={() => {}}
+                      className="size-8 text-center"
+                    />
                     <ScoreValue score={mp.match.finalScore?.home} />
                     <div className="text-center text-sm">
                       {mp.match.kickoff.toFormat("HH:mm")}
                     </div>
                     <TeamImage teamId={mp.match.awayTeam.id} />
                     <div>{mp.match.awayTeam.name}</div>
-                    <ScoreValue score={mp.predictedScore?.away} />
+                    <Input
+                      id={`pred-away-${mp.match.id}`}
+                      type="number"
+                      value={mp.predictedScore?.away}
+                      setValue={() => {}}
+                      className="size-8 text-center"
+                    />
                     <ScoreValue score={mp.match.finalScore?.away} />
                     <div className="text-center text-sm">
                       {getPointsText(mp.points)}

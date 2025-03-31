@@ -1,3 +1,4 @@
+import cx from "classix";
 import { HTMLInputAutoCompleteAttribute, HTMLInputTypeAttribute } from "react";
 
 export const Input = ({
@@ -8,14 +9,16 @@ export const Input = ({
   setValue,
   placeholder,
   required,
+  className,
 }: {
   id: string;
   type: HTMLInputTypeAttribute;
   autoComplete?: HTMLInputAutoCompleteAttribute;
-  value: string;
-  setValue: (email: string) => void;
-  placeholder: string;
+  value: string | number | undefined;
+  setValue: (value: string) => void;
+  placeholder?: string;
   required?: boolean;
+  className?: string;
 }) => {
   return (
     <input
@@ -27,7 +30,10 @@ export const Input = ({
       placeholder={placeholder}
       autoComplete={autoComplete}
       required={required}
-      className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-neutral-900 outline-1 -outline-offset-1 outline-neutral-300 placeholder:text-neutral-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+      className={cx(
+        "rounded-md bg-white text-base text-neutral-900 outline-1 -outline-offset-1 outline-neutral-300 placeholder:text-neutral-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6",
+        className,
+      )}
     />
   );
 };

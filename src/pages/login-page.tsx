@@ -33,6 +33,7 @@ const LoginPage = () => {
               autoComplete="email"
               placeholder="Email"
               required={true}
+              className="block w-full px-3 py-1.5"
             />
           </div>
 
@@ -45,6 +46,7 @@ const LoginPage = () => {
               autoComplete="current-password"
               placeholder="Password"
               required={true}
+              className="block w-full px-3 py-1.5"
             />
           </div>
 
