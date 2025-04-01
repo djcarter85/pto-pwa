@@ -17,18 +17,18 @@ const TeamName = ({ teamName }: { teamName: string }) => {
 const ScoreInput = ({
   type,
   matchId,
-  value,
+  initialValue,
 }: {
   type: string;
   matchId: string;
-  value?: number;
+  initialValue?: number;
 }) => {
   return (
     <Input
       id={`pred-${type}-${matchId}`}
       type="number"
       inputMode="numeric"
-      defaultValue={value}
+      defaultValue={initialValue}
       onValueChanged={() => {}}
       className="size-9 text-center"
     />
@@ -100,7 +100,7 @@ export const PredictionsPage = () => {
                     <ScoreInput
                       type="home"
                       matchId={mp.match.id}
-                      value={mp.predictedScore?.home}
+                      initialValue={mp.predictedScore?.home}
                     />
                     <ScoreValue score={mp.match.finalScore?.home} />
                     <div className="text-center text-sm">
@@ -111,7 +111,7 @@ export const PredictionsPage = () => {
                     <ScoreInput
                       type="away"
                       matchId={mp.match.id}
-                      value={mp.predictedScore?.away}
+                      initialValue={mp.predictedScore?.away}
                     />
                     <ScoreValue score={mp.match.finalScore?.away} />
                     <div className="text-center text-sm">
