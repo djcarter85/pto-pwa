@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Container } from "../components/container";
 import { Input } from "../components/input";
 import logo from "../assets/logo.png";
+import { Button } from "../components/button";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -54,12 +55,7 @@ const LoginPage = () => {
         </div>
 
         <div>
-          <button
-            onClick={onLogInClick}
-            className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-          >
-            Log in
-          </button>
+          <Button text="Log in" onClick={onLogInClick} />
         </div>
       </Container>
     </main>
