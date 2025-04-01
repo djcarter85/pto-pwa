@@ -4,6 +4,7 @@ import { logOut } from "../../services/auth-service";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
 import { Loading } from "../../components/loading";
+import { Button } from "../../components/button";
 
 export const SettingsPage = () => {
   const [redirectToLogin, setRedirectToLogin] = useState(false);
@@ -36,12 +37,7 @@ export const SettingsPage = () => {
         <span>You are logged in as {data.emailAddress}</span>
       </div>
       <div>
-        <button
-          className="rounded-sm bg-blue-700 px-4 py-2 text-blue-50 hover:bg-blue-800"
-          onClick={onLogOut}
-        >
-          Log out
-        </button>
+        <Button text="Log out" onClick={onLogOut} />
       </div>
     </div>
   );

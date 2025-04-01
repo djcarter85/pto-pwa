@@ -55,7 +55,7 @@ const LoginPage = () => {
         </div>
 
         <div>
-          <Button text="Log in" onClick={onLogInClick} />
+          <Button text="Log in" onClick={onLogInClick} className="w-full" />
         </div>
       </Container>
     </main>
