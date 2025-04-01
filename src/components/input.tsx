@@ -7,7 +7,7 @@ export const Input = ({
   inputMode,
   autoComplete,
   value,
-  setValue,
+  onValueChanged,
   placeholder,
   required,
   className,
@@ -17,7 +17,7 @@ export const Input = ({
   inputMode?: "numeric" | undefined;
   autoComplete?: HTMLInputAutoCompleteAttribute;
   value: string | number | undefined;
-  setValue: (value: string) => void;
+  onValueChanged: (value: string) => void;
   placeholder?: string;
   required?: boolean;
   className?: string;
@@ -29,7 +29,7 @@ export const Input = ({
       type={type}
       inputMode={inputMode}
       value={value}
-      onChange={(e) => setValue(e.target.value)}
+      onChange={(e) => onValueChanged(e.target.value)}
       placeholder={placeholder}
       autoComplete={autoComplete}
       required={required}

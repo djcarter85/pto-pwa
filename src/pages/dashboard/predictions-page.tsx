@@ -29,7 +29,7 @@ const ScoreInput = ({
       type="number"
       inputMode="numeric"
       value={value}
-      setValue={() => {}}
+      onValueChanged={() => {}}
       className="size-9 text-center"
     />
   );

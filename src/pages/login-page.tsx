@@ -33,7 +33,7 @@ const LoginPage = () => {
             id="email"
             type="email"
             value={email}
-            setValue={setEmail}
+            onValueChanged={setEmail}
             autoComplete="email"
             placeholder="Email"
             required={true}
@@ -46,7 +46,7 @@ const LoginPage = () => {
             id="password"
             type="password"
             value={password}
-            setValue={setPassword}
+            onValueChanged={setPassword}
             autoComplete="current-password"
             placeholder="Password"
             required={true}
