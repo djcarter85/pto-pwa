@@ -10,6 +10,10 @@ const TeamImage = ({ teamId }: { teamId: number }) => {
   return <img src={`/assets/teams/logo-${teamId}.svg`} className="size-8" />;
 };
 
+const TeamName = ({ teamName }: { teamName: string }) => {
+  return <div>{teamName}</div>;
+};
+
 const ScoreValue = ({ score }: { score?: number }) => {
   return (
     <div className="flex size-9 items-center justify-center rounded-md bg-neutral-100">
@@ -71,7 +75,7 @@ export const PredictionsPage = () => {
                     className="col-span-5 grid grid-cols-subgrid items-center gap-x-3 gap-y-1 px-3 py-2"
                   >
                     <TeamImage teamId={mp.match.homeTeam.id} />
-                    <div>{mp.match.homeTeam.name}</div>
+                    <TeamName teamName={mp.match.homeTeam.name} />
                     <Input
                       id={`pred-home-${mp.match.id}`}
                       type="number"
@@ -85,7 +89,7 @@ export const PredictionsPage = () => {
                       {mp.match.kickoff.toFormat("HH:mm")}
                     </div>
                     <TeamImage teamId={mp.match.awayTeam.id} />
-                    <div>{mp.match.awayTeam.name}</div>
+                    <TeamName teamName={mp.match.awayTeam.name} />
                     <Input
                       id={`pred-away-${mp.match.id}`}
                       type="number"
