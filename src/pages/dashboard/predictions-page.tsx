@@ -28,7 +28,7 @@ const ScoreInput = ({
       id={`pred-${type}-${matchId}`}
       type="number"
       inputMode="numeric"
-      value={value}
+      defaultValue={value}
       onValueChanged={() => {}}
       className="size-9 text-center"
     />

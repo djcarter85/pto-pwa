@@ -32,7 +32,7 @@ const LoginPage = () => {
           <Input
             id="email"
             type="email"
-            value={email}
+            defaultValue=""
             onValueChanged={setEmail}
             autoComplete="email"
             placeholder="Email"
@@ -45,7 +45,7 @@ const LoginPage = () => {
           <Input
             id="password"
             type="password"
-            value={password}
+            defaultValue=""
             onValueChanged={setPassword}
             autoComplete="current-password"
             placeholder="Password"
