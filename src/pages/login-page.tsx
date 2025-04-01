@@ -4,6 +4,7 @@ import { getDashboardHomeUrl } from "../utils/urls";
 import { useState } from "react";
 import { Container } from "../components/container";
 import { Input } from "../components/input";
+import logo from "../assets/logo.png";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -23,7 +24,10 @@ const LoginPage = () => {
   return (
     <main className="py-safe">
       <Container className="flex min-h-dvh flex-col justify-center px-6">
-        <form onSubmit={onLogInClick} className="space-y-6">
+        <form onSubmit={onLogInClick} className="space-y-4">
+          <div className="flex justify-center">
+            <img src={logo} className="size-24 rounded-lg" />
+          </div>
           <div>
             <Input
               id="email"
