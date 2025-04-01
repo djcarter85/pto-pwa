@@ -36,7 +36,7 @@ export const LeaderboardPage = () => {
         </thead>
         <tbody>
           {data.leaderboard.map((x) => (
-            <tr key={x.player.id} className="odd:bg-neutral-100">
+            <tr key={x.player.id} className="odd:bg-neutral-50">
               <td className="px-3 py-1 text-left">
                 {x.rank}
                 {x.rankIsShared && "="}
