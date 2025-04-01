@@ -11,7 +11,7 @@ const TeamImage = ({ teamId }: { teamId: number }) => {
 };
 
 const TeamName = ({ teamName }: { teamName: string }) => {
-  return <div>{teamName}</div>;
+  return <div className="text-lg">{teamName}</div>;
 };
 
 const ScoreInput = ({
