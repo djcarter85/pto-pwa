@@ -9,6 +9,7 @@ import { Fragment, useState } from "react";
 import { Header } from "../../components/header";
 import { Input } from "../../components/input";
 import { DateTime } from "luxon";
+import { ArrowRepeat, Check } from "react-bootstrap-icons";
 
 const TeamImage = ({ teamId }: { teamId: number }) => {
   return <img src={`/assets/teams/logo-${teamId}.svg`} className="size-8" />;
@@ -68,6 +69,23 @@ const getPointsText = (points: number | null) => {
   return `${points} pts`;
 };
 
+const SaveIndicator = ({ status }: { status: "SAVING" | "SAVED" }) => {
+  switch (status) {
+    case "SAVING":
+      return (
+        <div className="flex justify-center text-2xl text-blue-600">
+          <ArrowRepeat className="animate-spin" />
+        </div>
+      );
+    case "SAVED":
+      return (
+        <div className="flex justify-center text-2xl text-green-500">
+          <Check />
+        </div>
+      );
+  }
+};
+
 const MatchBlock = ({
   matchPrediction,
   playerId,
@@ -91,13 +109,20 @@ const MatchBlock = ({
   };
   playerId: string;
 }) => {
+  const [saveStatus, setSaveStatus] = useState<"SAVING" | "SAVED" | undefined>(
+    undefined,
+  );
+
   // No need to use state, as we don't need to re-render uncontrolled components.
   let home = matchPrediction.predictedScore?.home;
   let away = matchPrediction.predictedScore?.away;
 
   const savePredictionIfValid = async () => {
     if (home !== undefined && away != undefined) {
+      // TODO: handle errors
+      setSaveStatus("SAVING");
       await postPredictions(playerId, matchPrediction.match.id, home, away);
+      setSaveStatus("SAVED");
     }
   };
 
@@ -130,8 +155,14 @@ const MatchBlock = ({
         }}
       />
       <ScoreValue score={matchPrediction.match.finalScore?.away} />
-      <div className="text-center text-sm">
-        {getPointsText(matchPrediction.points)}
+      <div className="text-center">
+        {saveStatus ? (
+          <SaveIndicator status={saveStatus} />
+        ) : (
+          <span className="text-sm">
+            {getPointsText(matchPrediction.points)}
+          </span>
+        )}
       </div>
     </div>
   );
