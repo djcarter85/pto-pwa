@@ -10,6 +10,8 @@ export const Input = ({
   onValueChanged,
   placeholder,
   required,
+  min,
+  max,
   className,
 }: {
   id: string;
@@ -20,6 +22,8 @@ export const Input = ({
   onValueChanged: (value: string) => void;
   placeholder?: string;
   required?: boolean;
+  min?: number;
+  max?: number;
   className?: string;
 }) => {
   return (
@@ -33,6 +37,8 @@ export const Input = ({
       placeholder={placeholder}
       autoComplete={autoComplete}
       required={required}
+      min={min}
+      max={max}
       className={cx(
         "rounded-md bg-white text-base text-neutral-900 outline-1 -outline-offset-1 outline-neutral-300 placeholder:text-neutral-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6",
         className,

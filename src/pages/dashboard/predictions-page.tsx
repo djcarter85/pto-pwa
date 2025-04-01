@@ -30,6 +30,8 @@ const ScoreInput = ({
       inputMode="numeric"
       defaultValue={initialValue}
       onValueChanged={() => {}}
+      min={0}
+      max={10}
       className="size-9 text-center"
     />
   );
