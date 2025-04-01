@@ -14,6 +14,27 @@ const TeamName = ({ teamName }: { teamName: string }) => {
   return <div>{teamName}</div>;
 };
 
+const ScoreInput = ({
+  type,
+  matchId,
+  value,
+}: {
+  type: string;
+  matchId: string;
+  value?: number;
+}) => {
+  return (
+    <Input
+      id={`pred-${type}-${matchId}`}
+      type="number"
+      inputMode="numeric"
+      value={value}
+      setValue={() => {}}
+      className="size-9 text-center"
+    />
+  );
+};
+
 const ScoreValue = ({ score }: { score?: number }) => {
   return (
     <div className="flex size-9 items-center justify-center rounded-md bg-neutral-100">
@@ -76,13 +97,10 @@ export const PredictionsPage = () => {
                   >
                     <TeamImage teamId={mp.match.homeTeam.id} />
                     <TeamName teamName={mp.match.homeTeam.name} />
-                    <Input
-                      id={`pred-home-${mp.match.id}`}
-                      type="number"
-                      inputMode="numeric"
+                    <ScoreInput
+                      type="home"
+                      matchId={mp.match.id}
                       value={mp.predictedScore?.home}
-                      setValue={() => {}}
-                      className="size-9 text-center"
                     />
                     <ScoreValue score={mp.match.finalScore?.home} />
                     <div className="text-center text-sm">
@@ -90,13 +108,10 @@ export const PredictionsPage = () => {
                     </div>
                     <TeamImage teamId={mp.match.awayTeam.id} />
                     <TeamName teamName={mp.match.awayTeam.name} />
-                    <Input
-                      id={`pred-away-${mp.match.id}`}
-                      type="number"
-                      inputMode="numeric"
+                    <ScoreInput
+                      type="away"
+                      matchId={mp.match.id}
                       value={mp.predictedScore?.away}
-                      setValue={() => {}}
-                      className="size-9 text-center"
                     />
                     <ScoreValue score={mp.match.finalScore?.away} />
                     <div className="text-center text-sm">
