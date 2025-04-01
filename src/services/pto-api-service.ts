@@ -48,6 +48,21 @@ const getWithAuth = async (path: string) => {
   });
 };
 
+const postWithAuth = async (path: string, payload: any) => {
+  const session = await getSession();
+
+  if (!session) {
+    throw new Error("Not logged in");
+  }
+
+  return await axios({
+    method: "post",
+    url: `${baseUrl}${path}`,
+    headers: { Authorization: "Bearer " + session.idToken },
+    data: payload,
+  });
+};
+
 export const getHomePage = async () => {
   const homePageSchema = z.object({ player: playerSchema });
 
@@ -114,4 +129,26 @@ export const getAccountPage = async () => {
   const response = await getWithAuth("/accountPage");
 
   return accountPageSchema.parse(response.data);
+};
+
+export const postPredictions = async (
+  playerId: string,
+  matchId: string,
+  homePrediction: number,
+  awayPrediction: number,
+) => {
+  const payload = {
+    playerId: playerId,
+    predictions: [
+      {
+        matchId: matchId,
+        predictedScore: {
+          home: homePrediction,
+          away: awayPrediction,
+        },
+      },
+    ],
+  };
+
+  await postWithAuth("/predictions", payload);
 };

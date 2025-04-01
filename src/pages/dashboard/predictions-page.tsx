@@ -1,8 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { getPredictionsPage } from "../../services/pto-api-service";
+import {
+  getPredictionsPage,
+  postPredictions,
+} from "../../services/pto-api-service";
 import { Loading } from "../../components/loading";
 import { formatDate } from "../../utils/formats";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Header } from "../../components/header";
 import { Input } from "../../components/input";
 import { DateTime } from "luxon";
@@ -19,10 +22,12 @@ const ScoreInput = ({
   type,
   matchId,
   initialValue,
+  onValueChanged,
 }: {
   type: string;
   matchId: string;
   initialValue?: number;
+  onValueChanged: (value: number) => void;
 }) => {
   return (
     <Input
@@ -30,7 +35,12 @@ const ScoreInput = ({
       type="number"
       inputMode="numeric"
       defaultValue={initialValue}
-      onValueChanged={() => {}}
+      onValueChanged={(v) => {
+        const parsedValue = parseInt(v);
+        if (!isNaN(parsedValue)) {
+          onValueChanged(parsedValue);
+        }
+      }}
       min={0}
       max={10}
       className="size-9 text-center"
@@ -60,6 +70,7 @@ const getPointsText = (points: number | null) => {
 
 const MatchBlock = ({
   matchPrediction,
+  playerId,
 }: {
   matchPrediction: {
     match: {
@@ -78,7 +89,18 @@ const MatchBlock = ({
     } | null;
     points: number | null;
   };
+  playerId: string;
 }) => {
+  // No need to use state, as we don't need to re-render uncontrolled components.
+  let home = matchPrediction.predictedScore?.home;
+  let away = matchPrediction.predictedScore?.away;
+
+  const savePredictionIfValid = async () => {
+    if (home !== undefined && away != undefined) {
+      await postPredictions(playerId, matchPrediction.match.id, home, away);
+    }
+  };
+
   return (
     <div className="col-span-5 grid grid-cols-subgrid items-center gap-x-3 gap-y-1 px-3 py-2">
       <TeamImage teamId={matchPrediction.match.homeTeam.id} />
@@ -87,6 +109,10 @@ const MatchBlock = ({
         type="home"
         matchId={matchPrediction.match.id}
         initialValue={matchPrediction.predictedScore?.home}
+        onValueChanged={async (v) => {
+          home = v;
+          await savePredictionIfValid();
+        }}
       />
       <ScoreValue score={matchPrediction.match.finalScore?.home} />
       <div className="text-center text-sm">
@@ -98,6 +124,10 @@ const MatchBlock = ({
         type="away"
         matchId={matchPrediction.match.id}
         initialValue={matchPrediction.predictedScore?.away}
+        onValueChanged={async (v) => {
+          away = v;
+          await savePredictionIfValid();
+        }}
       />
       <ScoreValue score={matchPrediction.match.finalScore?.away} />
       <div className="text-center text-sm">
@@ -143,7 +173,11 @@ export const PredictionsPage = () => {
                     b.match.kickoff.toUnixInteger(),
                 )
                 .map((mp) => (
-                  <MatchBlock key={mp.match.id} matchPrediction={mp} />
+                  <MatchBlock
+                    key={mp.match.id}
+                    matchPrediction={mp}
+                    playerId={data.player.id}
+                  />
                 ))}
             </Fragment>
           ))}
