@@ -51,7 +51,7 @@ const ScoreInput = ({
 
 const ScoreValue = ({ score }: { score?: number }) => {
   return (
-    <div className="flex size-9 items-center justify-center rounded-md bg-neutral-100">
+    <div className="flex size-9 items-center justify-center rounded-md bg-neutral-200">
       <span>{score ?? ""}</span>
     </div>
   );

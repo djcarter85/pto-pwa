@@ -36,7 +36,7 @@ export const LeaderboardPage = () => {
         </thead>
         <tbody>
           {data.leaderboard.map((x) => (
-            <tr key={x.player.id} className="odd:bg-neutral-50">
+            <tr key={x.player.id} className="odd:bg-neutral-100">
               <td className="px-3 py-1 text-left">
                 {x.rank}
                 {x.rankIsShared && "="}
@@ -50,7 +50,7 @@ export const LeaderboardPage = () => {
                 {x.player.name}
               </td>
               <td className="px-3 py-1 text-center">{x.matchesPredicted}</td>
-              <td className="px-3 py-1 text-center">{x.totalPoints}</td>
+              <td className="px-3 py-0.5 text-center font-bold text-primary-800 text-lg">{x.totalPoints}</td>
               <td className="px-3 py-1 text-center">
                 {x.pointsPerMatch.toFixed(2)}
               </td>
