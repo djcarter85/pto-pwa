@@ -38,7 +38,7 @@ const NavLink = ({
       to={to}
       className={cx(
         "flex h-full basis-full flex-col items-center justify-center gap-1",
-        isActive && "border-t-2 border-blue-700 text-blue-700",
+        isActive && "border-t-2 border-primary-700 text-primary-700",
         !isActive && "pt-0.5",
       )}
     >

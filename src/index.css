@@ -4,46 +4,87 @@
 
 @theme {
   --color-*: initial;
+  
+  /* Primary (Tailwind Sky) */  
+  --color-primary-50: oklch(0.977 0.013 236.62);
+  --color-primary-100: oklch(0.951 0.026 236.824);
+  --color-primary-200: oklch(0.901 0.058 230.902);
+  --color-primary-300: oklch(0.828 0.111 230.318);
+  --color-primary-400: oklch(0.746 0.16 232.661);
+  --color-primary-500: oklch(0.685 0.169 237.323);
+  --color-primary-600: oklch(0.588 0.158 241.966);
+  --color-primary-700: oklch(0.5 0.134 242.749);
+  --color-primary-800: oklch(0.443 0.11 240.79);
+  --color-primary-900: oklch(0.391 0.09 240.876);
+  --color-primary-950: oklch(0.293 0.066 243.157);
+  
+  /* Neutral (Tailwind Slate) */  
+  --color-neutral-50: oklch(0.984 0.003 247.858);
+  --color-neutral-100: oklch(0.968 0.007 247.896);
+  --color-neutral-200: oklch(0.929 0.013 255.508);
+  --color-neutral-300: oklch(0.869 0.022 252.894);
+  --color-neutral-400: oklch(0.704 0.04 256.788);
+  --color-neutral-500: oklch(0.554 0.046 257.417);
+  --color-neutral-600: oklch(0.446 0.043 257.281);
+  --color-neutral-700: oklch(0.372 0.044 257.287);
+  --color-neutral-800: oklch(0.279 0.041 260.031);
+  --color-neutral-900: oklch(0.208 0.042 265.755);
+  --color-neutral-950: oklch(0.129 0.042 264.695);
+  
+  /* Accent (Tailwind Teal) */  
+  --color-accent-50: oklch(0.984 0.014 180.72);
+  --color-accent-100: oklch(0.953 0.051 180.801);
+  --color-accent-200: oklch(0.91 0.096 180.426);
+  --color-accent-300: oklch(0.855 0.138 181.071);
+  --color-accent-400: oklch(0.777 0.152 181.912);
+  --color-accent-500: oklch(0.704 0.14 182.503);
+  --color-accent-600: oklch(0.6 0.118 184.704);
+  --color-accent-700: oklch(0.511 0.096 186.391);
+  --color-accent-800: oklch(0.437 0.078 188.216);
+  --color-accent-900: oklch(0.386 0.063 188.416);
+  --color-accent-950: oklch(0.277 0.046 192.524);
+  
+  /* Success (Tailwind Green) */
+  --color-success-50: oklch(0.982 0.018 155.826);
+  --color-success-100: oklch(0.962 0.044 156.743);
+  --color-success-200: oklch(0.925 0.084 155.995);
+  --color-success-300: oklch(0.871 0.15 154.449);
+  --color-success-400: oklch(0.792 0.209 151.711);
+  --color-success-500: oklch(0.723 0.219 149.579);
+  --color-success-600: oklch(0.627 0.194 149.214);
+  --color-success-700: oklch(0.527 0.154 150.069);
+  --color-success-800: oklch(0.448 0.119 151.328);
+  --color-success-900: oklch(0.393 0.095 152.535);
+  --color-success-950: oklch(0.266 0.065 152.934);
+
+  /* Warning (Tailwind Yellow) */
+  --color-warning-50: oklch(0.987 0.026 102.212);
+  --color-warning-100: oklch(0.973 0.071 103.193);
+  --color-warning-200: oklch(0.945 0.129 101.54);
+  --color-warning-300: oklch(0.905 0.182 98.111);
+  --color-warning-400: oklch(0.852 0.199 91.936);
+  --color-warning-500: oklch(0.795 0.184 86.047);
+  --color-warning-600: oklch(0.681 0.162 75.834);
+  --color-warning-700: oklch(0.554 0.135 66.442);
+  --color-warning-800: oklch(0.476 0.114 61.907);
+  --color-warning-900: oklch(0.421 0.095 57.708);
+  --color-warning-950: oklch(0.286 0.066 53.813);
+
+  /* Danger (Tailwind Red) */
+  --color-danger-50: oklch(0.971 0.013 17.38);
+  --color-danger-100: oklch(0.936 0.032 17.717);
+  --color-danger-200: oklch(0.885 0.062 18.334);
+  --color-danger-300: oklch(0.808 0.114 19.571);
+  --color-danger-400: oklch(0.704 0.191 22.216);
+  --color-danger-500: oklch(0.637 0.237 25.331);
+  --color-danger-600: oklch(0.577 0.245 27.325);
+  --color-danger-700: oklch(0.505 0.213 27.518);
+  --color-danger-800: oklch(0.444 0.177 26.899);
+  --color-danger-900: oklch(0.396 0.141 25.723);
+  --color-danger-950: oklch(0.258 0.092 26.042);
+
   --color-black: #000;
   --color-white: #fff;
-  --color-transparent: transparent;
-  --color-current: currentColor;
-
-  --color-blue-50: #effaff;
-  --color-blue-100: #daf3ff;
-  --color-blue-200: #bdebff;
-  --color-blue-300: #90dfff;
-  --color-blue-400: #5ccbfe;
-  --color-blue-500: #36affb;
-  --color-blue-600: #2092f0;
-  --color-blue-700: #197fe6;
-  --color-blue-800: #1a62b3;
-  --color-blue-900: #1b548d;
-  --color-blue-950: #153356;
-
-  --color-green-50: #f2fbf3;
-  --color-green-100: #e1f7e4;
-  --color-green-200: #c4eecb;
-  --color-green-300: #95e0a2;
-  --color-green-400: #5fc973;
-  --color-green-500: #3db854;
-  --color-green-600: #2a8f3d;
-  --color-green-700: #247133;
-  --color-green-800: #215a2d;
-  --color-green-900: #1d4a27;
-  --color-green-950: #0b2812;
-
-  --color-neutral-50: #f5f8f8;
-  --color-neutral-100: #edf1f2;
-  --color-neutral-200: #dee5e7;
-  --color-neutral-300: #c9d4d8;
-  --color-neutral-400: #b2c0c7;
-  --color-neutral-500: #9eabb6;
-  --color-neutral-600: #8895a3;
-  --color-neutral-700: #737f8c;
-  --color-neutral-800: #606a73;
-  --color-neutral-900: #50575f;
-  --color-neutral-950: #2f3337;
 
   --font-sans: "Mulish", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
