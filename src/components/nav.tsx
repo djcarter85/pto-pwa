@@ -34,23 +34,16 @@ const NavLink = ({
   const isActive = pathname === to;
 
   return (
-    <Link
-      to={to}
-      className={cx(
-        "flex h-full basis-full flex-col items-center justify-center gap-1",
-        isActive && "border-t-2 border-primary-500 text-primary-500",
-        !isActive && "pt-0.5",
-      )}
-    >
-      <div className="text-xl">{isActive ? activeIcon : inactiveIcon}</div>
-      <div className="text-sm">{text}</div>
+    <Link to={to} className={cx(isActive && "dock-active")}>
+      {isActive ? activeIcon : inactiveIcon}
+      <span className="dock-label">{text}</span>
     </Link>
   );
 };
 
 const Nav = () => {
   return (
-    <footer className="fixed bottom-0 left-0 right-0 border-t border-t-neutral-300 bg-white pb-safe">
+    <footer className="dock pb-safe bg-white">
       <Container>
         <nav className="flex h-16 flex-row items-center justify-around">
           <NavLink
