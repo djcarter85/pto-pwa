@@ -50,7 +50,7 @@ const NavLink = ({
 
 const Nav = () => {
   return (
-    <footer className="fixed bottom-0 left-0 right-0 border-t border-t-neutral-300 bg-neutral-50 pb-safe">
+    <footer className="fixed bottom-0 left-0 right-0 border-t border-t-neutral-300 bg-white pb-safe">
       <Container>
         <nav className="flex h-16 flex-row items-center justify-around">
           <NavLink

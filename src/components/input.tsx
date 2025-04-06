@@ -40,7 +40,7 @@ export const Input = ({
       min={min}
       max={max}
       className={cx(
-        "rounded-md bg-neutral-50 text-base text-neutral-900 outline-1 -outline-offset-1 outline-neutral-300 placeholder:text-neutral-300 focus:outline-2 focus:-outline-offset-2 focus:outline-primary-500 sm:text-sm/6",
+        "rounded-md bg-white text-base text-neutral-900 outline-1 -outline-offset-1 outline-neutral-300 placeholder:text-neutral-300 focus:outline-2 focus:-outline-offset-2 focus:outline-primary-500 sm:text-sm/6",
         className,
       )}
     />
