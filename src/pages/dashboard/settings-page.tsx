@@ -39,6 +39,9 @@ export const SettingsPage = () => {
       <div>
         <Button text="Log out" onClick={onLogOut} />
       </div>
+      <div className="text-neutral-300">
+        Version: {import.meta.env.VITE_COMMIT_SHA?.substring(0, 7)}
+      </div>
     </div>
   );
 };
