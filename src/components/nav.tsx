@@ -38,7 +38,7 @@ const NavLink = ({
       to={to}
       className={cx(
         "flex h-full basis-full flex-col items-center justify-center gap-1",
-        isActive && "border-t-2 border-blue-700 text-blue-700",
+        isActive && "border-t-2 border-primary-500 text-primary-500",
         !isActive && "pt-0.5",
       )}
     >
@@ -50,7 +50,7 @@ const NavLink = ({
 
 const Nav = () => {
   return (
-    <footer className="fixed bottom-0 left-0 right-0 border-t border-t-neutral-300 bg-white pb-safe">
+    <footer className="fixed bottom-0 left-0 right-0 border-t border-t-neutral-300 bg-neutral-50 pb-safe">
       <Container>
         <nav className="flex h-16 flex-row items-center justify-around">
           <NavLink

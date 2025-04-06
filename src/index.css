@@ -4,46 +4,27 @@
 
 @theme {
   --color-*: initial;
-  --color-black: #000;
+
   --color-white: #fff;
-  --color-transparent: transparent;
-  --color-current: currentColor;
+  --color-black: #000;
 
-  --color-blue-50: #effaff;
-  --color-blue-100: #daf3ff;
-  --color-blue-200: #bdebff;
-  --color-blue-300: #90dfff;
-  --color-blue-400: #5ccbfe;
-  --color-blue-500: #36affb;
-  --color-blue-600: #2092f0;
-  --color-blue-700: #197fe6;
-  --color-blue-800: #1a62b3;
-  --color-blue-900: #1b548d;
-  --color-blue-950: #153356;
+  --color-primary-950: oklch(0.15 0.09 250);
+  --color-primary-900: oklch(0.21 0.12 250);
+  --color-primary-700: oklch(0.4 0.14 250);
+  --color-primary-500: oklch(0.58 0.15 250);
+  --color-primary-300: oklch(0.85 0.13 250);
+  --color-primary-100: oklch(0.95 0.02 250);
+  --color-primary-50: oklch(0.98 0.015 250);
 
-  --color-green-50: #f2fbf3;
-  --color-green-100: #e1f7e4;
-  --color-green-200: #c4eecb;
-  --color-green-300: #95e0a2;
-  --color-green-400: #5fc973;
-  --color-green-500: #3db854;
-  --color-green-600: #2a8f3d;
-  --color-green-700: #247133;
-  --color-green-800: #215a2d;
-  --color-green-900: #1d4a27;
-  --color-green-950: #0b2812;
+  --color-neutral-950: oklch(0.1 0.02 250);
+  --color-neutral-900: oklch(0.2 0.04 250);
+  --color-neutral-700: oklch(0.41 0.043 250);
+  --color-neutral-500: oklch(0.61 0.04 250);
+  --color-neutral-300: oklch(0.82 0.02 250);
+  --color-neutral-100: oklch(0.94 0.01 250);
+  --color-neutral-50: oklch(0.98 0.0011 250);
 
-  --color-neutral-50: #f5f8f8;
-  --color-neutral-100: #edf1f2;
-  --color-neutral-200: #dee5e7;
-  --color-neutral-300: #c9d4d8;
-  --color-neutral-400: #b2c0c7;
-  --color-neutral-500: #9eabb6;
-  --color-neutral-600: #8895a3;
-  --color-neutral-700: #737f8c;
-  --color-neutral-800: #606a73;
-  --color-neutral-900: #50575f;
-  --color-neutral-950: #2f3337;
+  --color-success-500: oklch(0.61 0.19 140);
 
   --font-sans: "Mulish", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";

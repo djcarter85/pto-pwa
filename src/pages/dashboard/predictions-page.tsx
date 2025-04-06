@@ -73,13 +73,13 @@ const SaveIndicator = ({ status }: { status: "SAVING" | "SAVED" }) => {
   switch (status) {
     case "SAVING":
       return (
-        <div className="flex justify-center text-2xl text-blue-600">
+        <div className="flex justify-center text-2xl text-primary-500">
           <ArrowRepeat className="animate-spin" />
         </div>
       );
     case "SAVED":
       return (
-        <div className="flex justify-center text-2xl text-green-500">
+        <div className="flex justify-center text-2xl text-success-500">
           <Check />
         </div>
       );

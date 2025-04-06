@@ -13,7 +13,7 @@ export const Button = ({
     <button
       onClick={onClick}
       className={cx(
-        "flex justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600",
+        "bg-primary-500 hover:bg-primary-300 focus-visible:outline-primary-700 flex justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2",
         className,
       )}
     >
