@@ -93,9 +93,10 @@ const PointsIndicator = ({ points }: { points: number | null }) => {
   const plural = points !== 1;
 
   return (
-    <span className="text-sm">
-      {points} pt{plural && "s"}
-    </span>
+    <div className="flex flex-row items-baseline justify-center gap-x-1">
+      <div className="font-semibold text-lg">{points}</div>
+      <div className="text-base-content/50 text-sm font-semibold">pt{plural && "s"}</div>
+    </div>
   );
 };
 
