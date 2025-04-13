@@ -90,11 +90,13 @@ const PointsIndicator = ({ points }: { points: number | null }) => {
     return null;
   }
 
-  if (points === 1) {
-    return <span className="text-sm">1 pt</span>;
-  }
+  const plural = points !== 1;
 
-  return <span className="text-sm">{points} pts</span>;
+  return (
+    <span className="text-sm">
+      {points} pt{plural && "s"}
+    </span>
+  );
 };
 
 const SaveIndicator = ({ status }: { status: "SAVING" | "SAVED" }) => {
