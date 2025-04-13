@@ -8,8 +8,9 @@ import { formatDate } from "../../utils/formats";
 import { Fragment, useState } from "react";
 import { Header } from "../../components/header";
 import { Input } from "../../components/input";
-import { DateTime } from "luxon";
 import { ArrowRepeat, Check } from "react-bootstrap-icons";
+import { z } from "zod";
+import { matchSchema } from "../../services/schema-service";
 
 const TeamImage = ({ teamId }: { teamId: number }) => {
   return <img src={`/assets/teams/logo-${teamId}.svg`} className="size-8" />;
@@ -17,6 +18,12 @@ const TeamImage = ({ teamId }: { teamId: number }) => {
 
 const TeamName = ({ teamName }: { teamName: string }) => {
   return <div className="text-lg">{teamName}</div>;
+};
+
+const StatusIndicator = ({ match }: { match: z.infer<typeof matchSchema> }) => {
+  return (
+    <div className="text-center text-sm">{match.kickoff.toFormat("HH:mm")}</div>
+  );
 };
 
 const ScoreInput = ({
@@ -51,7 +58,7 @@ const ScoreInput = ({
 
 const ScoreValue = ({ score }: { score?: number }) => {
   return (
-    <div className="flex size-9 items-center justify-center rounded-md bg-base-200">
+    <div className="bg-base-200 flex size-9 items-center justify-center rounded-md">
       <span>{score ?? ""}</span>
     </div>
   );
@@ -73,13 +80,13 @@ const SaveIndicator = ({ status }: { status: "SAVING" | "SAVED" }) => {
   switch (status) {
     case "SAVING":
       return (
-        <div className="flex justify-center text-2xl text-info">
+        <div className="text-info flex justify-center text-2xl">
           <ArrowRepeat className="animate-spin" />
         </div>
       );
     case "SAVED":
       return (
-        <div className="flex justify-center text-2xl text-success">
+        <div className="text-success flex justify-center text-2xl">
           <Check />
         </div>
       );
@@ -91,16 +98,7 @@ const MatchBlock = ({
   playerId,
 }: {
   matchPrediction: {
-    match: {
-      id: string;
-      homeTeam: { id: number; name: string };
-      awayTeam: { id: number; name: string };
-      kickoff: DateTime;
-      finalScore: {
-        home: number;
-        away: number;
-      } | null;
-    };
+    match: z.infer<typeof matchSchema>;
     predictedScore: {
       home: number;
       away: number;
@@ -140,9 +138,7 @@ const MatchBlock = ({
         }}
       />
       <ScoreValue score={matchPrediction.match.finalScore?.home} />
-      <div className="text-center text-sm">
-        {matchPrediction.match.kickoff.toFormat("HH:mm")}
-      </div>
+      <StatusIndicator match={matchPrediction.match} />
       <TeamImage teamId={matchPrediction.match.awayTeam.id} />
       <TeamName teamName={matchPrediction.match.awayTeam.name} />
       <ScoreInput
