@@ -51,7 +51,7 @@ const ScoreInput = ({
 
 const ScoreValue = ({ score }: { score?: number }) => {
   return (
-    <div className="flex size-9 items-center justify-center rounded-md bg-neutral-100">
+    <div className="flex size-9 items-center justify-center rounded-md bg-base-200">
       <span>{score ?? ""}</span>
     </div>
   );
@@ -73,13 +73,13 @@ const SaveIndicator = ({ status }: { status: "SAVING" | "SAVED" }) => {
   switch (status) {
     case "SAVING":
       return (
-        <div className="flex justify-center text-2xl text-primary-500">
+        <div className="flex justify-center text-2xl text-info">
           <ArrowRepeat className="animate-spin" />
         </div>
       );
     case "SAVED":
       return (
-        <div className="flex justify-center text-2xl text-success-500">
+        <div className="flex justify-center text-2xl text-success">
           <Check />
         </div>
       );

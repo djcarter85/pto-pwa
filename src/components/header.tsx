@@ -10,7 +10,7 @@ export const Header = ({
   playerName?: string;
 }) => {
   return (
-    <div className="grid grid-cols-[auto_1fr_auto_1fr] items-center gap-x-3 gap-y-2 border-b border-b-neutral-600 px-4 py-4 text-lg">
+    <div className="grid grid-cols-[auto_1fr_auto_1fr] items-center gap-x-3 gap-y-2 border-b border-neutral/30 px-4 py-4 text-lg">
       <Trophy />
       <div>{tournamentName}</div>
       <Clock />

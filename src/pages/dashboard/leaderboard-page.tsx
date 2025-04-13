@@ -3,7 +3,6 @@ import { getLeaderboardPage } from "../../services/pto-api-service";
 import cx from "classix";
 import { Loading } from "../../components/loading";
 import { Header } from "../../components/header";
-import { Fragment } from "react";
 
 export const LeaderboardPage = () => {
   const { data, error } = useQuery({
@@ -26,33 +25,36 @@ export const LeaderboardPage = () => {
         roundName={data.round?.shortName ?? "Overall"}
       />
       <div className="mb-3 grid w-full grid-cols-[auto_1fr_auto_auto_auto] gap-x-3">
-        <div className="py-1 pl-3 text-left">#</div>
-        <div className="py-1 text-left">Player</div>
-        <div className="py-1 text-center">MP</div>
-        <div className="py-1 text-center">PTS</div>
-        <div className="py-1 pr-3 text-center">AVG</div>
         {data.leaderboard.map((x) => (
-          <Fragment key={x.player.id}>
+          <div
+            key={x.player.id}
+            className="even:bg-base-200 col-span-5 grid grid-cols-subgrid"
+          >
             <div className="py-1 pl-3 text-left">
               {x.rank}
               {x.rankIsShared && "="}
             </div>
             <div
               className={cx(
-                "py-0.5 text-left text-lg",
+                "py-1 text-left font-semibold",
                 x.player.isHuman || "italic",
               )}
             >
               {x.player.name}
             </div>
-            <div className="py-1 text-center">{x.matchesPredicted}</div>
-            <div className="text-primary-700 py-0.5 text-center text-lg font-bold">
-              {x.totalPoints}
+            <div className="text-primary py-0.5 text-center">
+              <span className="text-lg font-bold">{x.totalPoints}</span>
+              <span className="text-neutral/50 pl-1 text-xs">pts</span>
+            </div>
+            <div className="py-1 text-center">
+              <span className="">{x.matchesPredicted}</span>
+              <span className="text-neutral/50 pl-1 text-xs">m</span>
             </div>
             <div className="py-1 pr-3 text-center">
-              {x.pointsPerMatch.toFixed(2)}
+              <span>{x.pointsPerMatch.toFixed(2)}</span>
+              <span className="text-neutral/50 pl-1 text-xs">avg</span>
             </div>
-          </Fragment>
+          </div>
         ))}
       </div>
     </div>

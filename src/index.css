@@ -2,30 +2,46 @@
 
 @plugin 'tailwindcss-safe-area';
 
+@plugin "daisyui" {
+  themes: pto --default;
+}
+
+@plugin "daisyui/theme" {
+  name: "pto";
+  default: true;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-base-100: oklch(98% 0.003 247.858);
+  --color-base-200: oklch(96% 0.007 247.896);
+  --color-base-300: oklch(92% 0.013 255.508);
+  --color-base-content: oklch(20% 0.042 265.755);
+  --color-primary: oklch(58% 0.158 241.966);
+  --color-primary-content: oklch(97% 0.013 236.62);
+  --color-secondary: oklch(44% 0.043 257.281);
+  --color-secondary-content: oklch(98% 0.003 247.858);
+  --color-accent: oklch(55% 0.288 302.321);
+  --color-accent-content: oklch(97% 0.014 308.299);
+  --color-neutral: oklch(20% 0.042 265.755);
+  --color-neutral-content: oklch(98% 0.003 247.858);
+  --color-info: oklch(54% 0.245 262.881);
+  --color-info-content: oklch(97% 0.014 254.604);
+  --color-success: oklch(59% 0.145 163.225);
+  --color-success-content: oklch(97% 0.021 166.113);
+  --color-warning: oklch(66% 0.179 58.318);
+  --color-warning-content: oklch(98% 0.022 95.277);
+  --color-error: oklch(57% 0.245 27.325);
+  --color-error-content: oklch(97% 0.013 17.38);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.21875rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
 @theme {
-  --color-*: initial;
-
-  --color-white: #fff;
-  --color-black: #000;
-
-  --color-primary-950: oklch(0.15 0.09 250);
-  --color-primary-900: oklch(0.21 0.12 250);
-  --color-primary-700: oklch(0.4 0.14 250);
-  --color-primary-500: oklch(0.58 0.15 250);
-  --color-primary-300: oklch(0.85 0.13 250);
-  --color-primary-100: oklch(0.95 0.02 250);
-  --color-primary-50: oklch(0.98 0.015 250);
-
-  --color-neutral-950: oklch(0.1 0.02 250);
-  --color-neutral-900: oklch(0.2 0.04 250);
-  --color-neutral-700: oklch(0.41 0.043 250);
-  --color-neutral-500: oklch(0.61 0.04 250);
-  --color-neutral-300: oklch(0.82 0.02 250);
-  --color-neutral-100: oklch(0.94 0.01 250);
-  --color-neutral-50: oklch(0.98 0.0011 250);
-
-  --color-success-500: oklch(0.61 0.19 140);
-
   --font-sans: "Mulish", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
