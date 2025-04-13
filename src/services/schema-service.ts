@@ -22,12 +22,26 @@ export const scoreSchema = z.object({
   away: z.number(),
 });
 
-export const tournamentSchema = z.object({ name: z.string(), shortName: z.string() });
+export const tournamentSchema = z.object({
+  name: z.string(),
+  shortName: z.string(),
+});
 
-export const roundSchema = z.object({ name: z.string(), shortName: z.string() });
+export const roundSchema = z.object({
+  name: z.string(),
+  shortName: z.string(),
+});
 
 export const teamSchema = z.object({
   id: z.number(),
   name: z.string(),
   shortName: z.string(),
+});
+
+export const matchSchema = z.object({
+  id: z.string(),
+  homeTeam: teamSchema,
+  awayTeam: teamSchema,
+  kickoff: dateTimeUtcSchema,
+  finalScore: scoreSchema.nullable(),
 });

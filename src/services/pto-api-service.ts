@@ -6,9 +6,8 @@ import {
   tournamentSchema,
   roundSchema,
   dateSchema,
-  teamSchema,
-  dateTimeUtcSchema,
   scoreSchema,
+  matchSchema,
 } from "./schema-service";
 
 const baseUrl = "https://api.pto.football";
@@ -79,13 +78,7 @@ export const getPredictionsPage = async () => {
         date: dateSchema,
         matchPredictions: z.array(
           z.object({
-            match: z.object({
-              id: z.string(),
-              homeTeam: teamSchema,
-              awayTeam: teamSchema,
-              kickoff: dateTimeUtcSchema,
-              finalScore: scoreSchema.nullable(),
-            }),
+            match: matchSchema,
             predictedScore: scoreSchema.nullable(),
             points: z.number().nullable(),
           }),
