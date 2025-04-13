@@ -85,16 +85,16 @@ const ScoreValue = ({ score }: { score?: number }) => {
   );
 };
 
-const getPointsText = (points: number | null) => {
+const PointsIndicator = ({ points }: { points: number | null }) => {
   if (points === null) {
     return null;
   }
 
   if (points === 1) {
-    return "1 pt";
+    return <span className="text-sm">1 pt</span>;
   }
 
-  return `${points} pts`;
+  return <span className="text-sm">{points} pts</span>;
 };
 
 const SaveIndicator = ({ status }: { status: "SAVING" | "SAVED" }) => {
@@ -176,9 +176,7 @@ const MatchBlock = ({
         {saveStatus ? (
           <SaveIndicator status={saveStatus} />
         ) : (
-          <span className="text-sm">
-            {getPointsText(matchPrediction.points)}
-          </span>
+          <PointsIndicator points={matchPrediction.points} />
         )}
       </div>
     </div>
