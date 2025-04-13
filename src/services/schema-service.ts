@@ -43,5 +43,6 @@ export const matchSchema = z.object({
   homeTeam: teamSchema,
   awayTeam: teamSchema,
   kickoff: dateTimeUtcSchema,
+  currentScore: scoreSchema.nullable(),
   finalScore: scoreSchema.nullable(),
 });

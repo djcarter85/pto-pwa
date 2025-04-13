@@ -21,6 +21,27 @@ const TeamName = ({ teamName }: { teamName: string }) => {
 };
 
 const StatusIndicator = ({ match }: { match: z.infer<typeof matchSchema> }) => {
+  if (match.finalScore) {
+    return (
+      <div className="flex flex-row items-center justify-center gap-x-1 text-sm">
+        <div aria-label="success" className="status status-success"></div>
+        <div>FT</div>
+      </div>
+    );
+  }
+
+  if (match.currentScore) {
+    return (
+      <div className="flex flex-row items-center justify-center gap-x-1 text-sm">
+        <div aria-label="info" className="inline-grid *:[grid-area:1/1]">
+          <div className="status status-info animate-ping"></div>
+          <div className="status status-info"></div>
+        </div>
+        <div>L</div>
+      </div>
+    );
+  }
+
   return (
     <div className="text-center text-sm">{match.kickoff.toFormat("HH:mm")}</div>
   );
