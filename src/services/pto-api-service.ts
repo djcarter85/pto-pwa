@@ -1,40 +1,17 @@
 import axios from "axios";
 import { z } from "zod";
 import { getSession } from "./auth-service";
-import { DateTime } from "luxon";
+import {
+  playerSchema,
+  tournamentSchema,
+  roundSchema,
+  dateSchema,
+  teamSchema,
+  dateTimeUtcSchema,
+  scoreSchema,
+} from "./schema-service";
 
 const baseUrl = "https://api.pto.football";
-
-const playerSchema = z.object({
-  id: z.string(),
-  name: z.string(),
-  isHuman: z.boolean(),
-});
-
-const dateSchema = z
-  .string()
-  .transform((x) => DateTime.fromISO(x))
-  .refine((d) => d.isValid, "Invalid DateTime.");
-
-const dateTimeUtcSchema = z
-  .string()
-  .transform((x) => DateTime.fromISO(x))
-  .refine((d) => d.isValid, "Invalid DateTime.");
-
-const scoreSchema = z.object({
-  home: z.number(),
-  away: z.number(),
-});
-
-const tournamentSchema = z.object({ name: z.string(), shortName: z.string() });
-
-const roundSchema = z.object({ name: z.string(), shortName: z.string() });
-
-const teamSchema = z.object({
-  id: z.number(),
-  name: z.string(),
-  shortName: z.string(),
-});
 
 const getWithAuth = async (path: string) => {
   const session = await getSession();
