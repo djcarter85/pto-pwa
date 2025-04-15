@@ -161,7 +161,7 @@ const MatchBlock = ({
           await savePredictionIfValid();
         }}
       />
-      <ScoreValue score={matchPrediction.match.finalScore?.home} />
+      <ScoreValue score={matchPrediction.match.finalScore?.home ?? matchPrediction.match.currentScore?.home} />
       <StatusIndicator match={matchPrediction.match} />
       <TeamImage teamId={matchPrediction.match.awayTeam.id} />
       <TeamName teamName={matchPrediction.match.awayTeam.name} />
@@ -174,7 +174,7 @@ const MatchBlock = ({
           await savePredictionIfValid();
         }}
       />
-      <ScoreValue score={matchPrediction.match.finalScore?.away} />
+      <ScoreValue score={matchPrediction.match.finalScore?.away ?? matchPrediction.match.currentScore?.away} />
       <div className="text-center">
         {saveStatus ? (
           <SaveIndicator status={saveStatus} />
