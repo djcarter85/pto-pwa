@@ -52,11 +52,13 @@ const ScoreInput = ({
   matchId,
   initialValue,
   onValueChanged,
+  enabled,
 }: {
   type: string;
   matchId: string;
   initialValue?: number;
   onValueChanged: (value: number) => void;
+  enabled: boolean;
 }) => {
   return (
     <Input
@@ -72,6 +74,7 @@ const ScoreInput = ({
       }}
       min={0}
       max={10}
+      disabled={!enabled}
       className="size-9 text-center"
     />
   );
@@ -139,6 +142,7 @@ const MatchBlock = ({
       home: number;
       away: number;
     } | null;
+    predictionStatus: "HIDDEN" | "EDITABLE" | "FIXED";
     points: number | null;
   };
   playerId: string;
@@ -172,6 +176,7 @@ const MatchBlock = ({
         type="home"
         matchId={matchPrediction.match.id}
         initialValue={matchPrediction.predictedScore?.home}
+        enabled={matchPrediction.predictionStatus === "EDITABLE"}
         onValueChanged={async (v) => {
           home = v;
           await savePredictionIfValid();
@@ -190,6 +195,7 @@ const MatchBlock = ({
         type="away"
         matchId={matchPrediction.match.id}
         initialValue={matchPrediction.predictedScore?.away}
+        enabled={matchPrediction.predictionStatus === "EDITABLE"}
         onValueChanged={async (v) => {
           away = v;
           await savePredictionIfValid();

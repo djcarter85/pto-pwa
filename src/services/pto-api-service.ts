@@ -80,6 +80,7 @@ export const getPredictionsPage = async () => {
           z.object({
             match: matchSchema,
             predictedScore: scoreSchema.nullable(),
+            predictionStatus: z.enum(["HIDDEN", "EDITABLE", "FIXED"]),
             points: z.number().nullable(),
           }),
         ),

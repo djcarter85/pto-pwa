@@ -12,6 +12,7 @@ export const Input = ({
   required,
   min,
   max,
+  disabled,
   className,
 }: {
   id: string;
@@ -24,6 +25,7 @@ export const Input = ({
   required?: boolean;
   min?: number;
   max?: number;
+  disabled?: boolean;
   className?: string;
 }) => {
   return (
@@ -39,6 +41,7 @@ export const Input = ({
       required={required}
       min={min}
       max={max}
+      disabled={disabled}
       className={cx(
         "input focus:outline-primary px-0 focus:border-transparent focus:-outline-offset-1",
         className,
