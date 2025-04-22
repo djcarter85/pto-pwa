@@ -39,7 +39,10 @@ export const Input = ({
       required={required}
       min={min}
       max={max}
-      className={cx("input px-0", className)}
+      className={cx(
+        "input focus:outline-primary px-0 focus:border-transparent focus:-outline-offset-1",
+        className,
+      )}
     />
   );
 };
