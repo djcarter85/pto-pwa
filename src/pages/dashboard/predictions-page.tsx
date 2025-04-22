@@ -8,7 +8,7 @@ import { formatDate } from "../../utils/formats";
 import { Fragment, useState } from "react";
 import { Header } from "../../components/header";
 import { Input } from "../../components/input";
-import { ArrowRepeat, Check } from "react-bootstrap-icons";
+import { ArrowRepeat, Check, X } from "react-bootstrap-icons";
 import { z } from "zod";
 import { matchSchema } from "../../services/schema-service";
 
@@ -102,7 +102,11 @@ const PointsIndicator = ({ points }: { points: number | null }) => {
   );
 };
 
-const SaveIndicator = ({ status }: { status: "SAVING" | "SAVED" }) => {
+const SaveIndicator = ({
+  status,
+}: {
+  status: "SAVING" | "SAVED" | "FAILED";
+}) => {
   switch (status) {
     case "SAVING":
       return (
@@ -114,6 +118,12 @@ const SaveIndicator = ({ status }: { status: "SAVING" | "SAVED" }) => {
       return (
         <div className="text-success flex justify-center text-2xl">
           <Check />
+        </div>
+      );
+    case "FAILED":
+      return (
+        <div className="text-error flex justify-center text-2xl">
+          <X />
         </div>
       );
   }
@@ -133,9 +143,9 @@ const MatchBlock = ({
   };
   playerId: string;
 }) => {
-  const [saveStatus, setSaveStatus] = useState<"SAVING" | "SAVED" | undefined>(
-    undefined,
-  );
+  const [saveStatus, setSaveStatus] = useState<
+    "SAVING" | "SAVED" | "FAILED" | undefined
+  >(undefined);
 
   // No need to use state, as we don't need to re-render uncontrolled components.
   let home = matchPrediction.predictedScore?.home;
@@ -145,8 +155,12 @@ const MatchBlock = ({
     if (home !== undefined && away != undefined) {
       // TODO: handle errors
       setSaveStatus("SAVING");
-      await postPredictions(playerId, matchPrediction.match.id, home, away);
-      setSaveStatus("SAVED");
+      try {
+        await postPredictions(playerId, matchPrediction.match.id, home, away);
+        setSaveStatus("SAVED");
+      } catch {
+        setSaveStatus("FAILED");
+      }
     }
   };
 
