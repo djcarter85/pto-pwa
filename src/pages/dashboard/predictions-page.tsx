@@ -94,8 +94,10 @@ const PointsIndicator = ({ points }: { points: number | null }) => {
 
   return (
     <div className="flex flex-row items-baseline justify-center gap-x-1">
-      <div className="font-semibold text-lg">{points}</div>
-      <div className="text-base-content/50 text-sm font-semibold">pt{plural && "s"}</div>
+      <div className="text-lg font-semibold">{points}</div>
+      <div className="text-base-content/50 text-sm font-semibold">
+        pt{plural && "s"}
+      </div>
     </div>
   );
 };
@@ -161,7 +163,12 @@ const MatchBlock = ({
           await savePredictionIfValid();
         }}
       />
-      <ScoreValue score={matchPrediction.match.finalScore?.home ?? matchPrediction.match.currentScore?.home} />
+      <ScoreValue
+        score={
+          matchPrediction.match.finalScore?.home ??
+          matchPrediction.match.currentScore?.home
+        }
+      />
       <StatusIndicator match={matchPrediction.match} />
       <TeamImage teamId={matchPrediction.match.awayTeam.id} />
       <TeamName teamName={matchPrediction.match.awayTeam.name} />
@@ -174,7 +181,12 @@ const MatchBlock = ({
           await savePredictionIfValid();
         }}
       />
-      <ScoreValue score={matchPrediction.match.finalScore?.away ?? matchPrediction.match.currentScore?.away} />
+      <ScoreValue
+        score={
+          matchPrediction.match.finalScore?.away ??
+          matchPrediction.match.currentScore?.away
+        }
+      />
       <div className="text-center">
         {saveStatus ? (
           <SaveIndicator status={saveStatus} />
